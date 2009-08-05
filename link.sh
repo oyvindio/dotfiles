@@ -6,7 +6,7 @@ cd "$WD"
 ACTION="$1"
 ACTION_CLEAN="clean"
 
-DOTFILES=$(find . -maxdepth 1 -name ".*")
+DOTFILES=$(find . -maxdepth 1 -name ".*" ! -name ".git")
 
 # remove a link, if it exists
 function rm_file() {
