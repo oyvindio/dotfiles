@@ -1,0 +1,24 @@
+# .screenrc
+
+vbell off
+activity ""
+bell_msg ""
+defscrollback 30000
+startup_message off
+altscreen on
+defutf8 on
+
+# status bar
+hardstatus off
+hardstatus alwayslastline
+#hardstatus string '%{= kB}[ %{B}%H %{B}][%= %{= kw}%?%-Lw%?%{B}[%{W}%n*%f%t%?(%u)%?%{B}]%{w}%?%+Lw%?%?%= %{B}][%{C} %d-%m %{W}%c %{B}]'
+#hardstatus string "%{= wk} %?%-Lw%?%{= kd} %n*%f %t %{= wk}%?%+Lw%? %{= wk}%=%{= Wk} %C%a %d-%m-%Y %{= wk}" # gray bar
+#hardstatus string "%{= Bk} %?%-Lw%?%{= kB} %n*%f %t %{= Bk}%?%+Lw%? %{= Bk}%=%{= Bk} %C%a %d-%m-%Y %{= Bk}" # blue bar
+hardstatus string "%{= Wk} %?%-Lw%?%{= kW} %n*%f %t %{= Wk}%?%+Lw%? %{= Wk}%=%{= Wk} %C%a %d-%m-%Y %{= Wk}" # white bar
+
+## keybindings
+escape ^\\              # change escape key from C-a to C-\
+bindkey -k k9 detach    # F9:   detach
+bindkey -k k; copy      # F10:  copy mode
+bindkey -k F1 prev      # F11:  prev window
+bindkey -k F2 next      # F12:  next window

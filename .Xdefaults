@@ -1,0 +1,54 @@
+! xterm !
+xterm*saveLines:        30000
+xterm*geometry:         120x40
+
+! urxvt !
+!URxvt*termName:         rxvt-unicode
+URxvt*termName:        rxvt-256color
+URxvt*geometry:         120x40
+URxvt*saveLines:        30000
+URxvt*visualBell:       false
+URxvt*scrollBar:        false
+URxvt*perl-lib:         /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:  default,matcher
+URxvt*urlLauncher:      firefox
+URxvt*matcher.button:   1
+! Colors
+URxvt*background:       #222222
+URxvt*cursorColor:      green
+
+! tango scheme
+URxvt*foreground: #babdb6
+! Black (not tango) + DarkGrey
+URxvt*color0: #000000
+URxvt*color8: #555753
+! DarkRed + Red
+URxvt*color1: #ff6565
+URxvt*color9: #ff8d8d
+! DarkGreen + Green
+URxvt*color2: #93d44f
+URxvt*color10: #c8e7a8
+! DarkYellow + Yellow
+URxvt*color3: #eab93d
+URxvt*color11: #ffc123
+! DarkBlue + Blue
+URxvt*color4: #204a87
+URxvt*color12: #3465a4
+! DarkMangenta + Mangenta
+URxvt*color5: #ce5c00
+URxvt*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+URxvt*color6: #89b6e2
+URxvt*color14: #46a4ff
+! LightGrey + White
+URxvt*color7: #cccccc
+URxvt*color15: #ffffff
+
+
+! urxvt fonts
+URxvt*font: xft:Droid Sans Mono:size=11
+URxvt*boldFont: xft:Droid Sans Mono:size=11
+
+! Emacs fonts
+Emacs*Font: Monospace-11:antialias=True
+emacs.FontBackend: xft
