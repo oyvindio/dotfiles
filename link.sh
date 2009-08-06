@@ -47,6 +47,7 @@ do
     case "$1" in
         "$ACTION_CLEAN")
         rm_file "$dotfile"
+        ln -sf "$SRC/.emacs.d.custom/" "$SRC/.emacs.d/$USER"
         ;;
         *)
         link_file "$dotfile"
