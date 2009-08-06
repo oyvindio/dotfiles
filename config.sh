@@ -1,4 +1,4 @@
-# the dotfiles we want to link
+# Add the dotfiles we want link.sh to link here:
 DOTFILES=(
     .bashrc.oyvindio
     .emacs.d
