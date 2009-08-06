@@ -4,12 +4,18 @@
 # Symlinks config files specified in config.sh to $HOME/                       #
 ################################################################################
 
-. config.sh
+
 
 ACTION_CLEAN="clean"
 ACTION_HELP="help"
 
-SRC="$(pwd)/$(dirname $0)"
+if [ "$(dirname $0)" == "." ]
+then
+    SRC="$(pwd)"
+else
+    SRC="$(pwd)/$(dirname $0)"
+fi
+. "$SRC/config.sh"
 
 # remove a link, if it exists
 function rm_file() {
