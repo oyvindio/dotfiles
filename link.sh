@@ -31,26 +31,30 @@ function link_file() {
 
     if [ -h "$HOME/$1" ]
     then
-        ln -svf "$file" "$HOME/"
+        ln -snvf "$file" "$HOME/"
     else
         if [ ! -e "$HOME/$1" ]
         then
-            ln -sv "$file" "$HOME/"
+            ln -snv "$file" "$HOME/"
         else
             echo "$HOME/$1 already exists, remove it first!"
         fi
     fi
 }
 
-for dotfile in "${DOTFILES[@]}"
-do
-    case "$1" in
-        "$ACTION_CLEAN")
-        rm_file "$dotfile"
-        ln -sf "$SRC/.emacs.d.custom/" "$SRC/.emacs.d/$USER"
+case "$1" in
+    "$ACTION_CLEAN")
+        rm -v "$SRC/.emacs.d/$USER"
+        for dotfile in "${DOTFILES[@]}"
+        do
+            rm_file "$dotfile"
+        done
         ;;
-        *)
-        link_file "$dotfile"
+    *)
+        ln -snvf "$SRC/.emacs.d.custom" "$SRC/.emacs.d/$USER"
+        for dotfile in "${DOTFILES[@]}"
+        do
+            link_file "$dotfile"
+        done
         ;;
-    esac
-done
+esac

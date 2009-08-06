@@ -1,10 +1,5 @@
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]]; then
-    # Shell is non-interactive.  Be done now!
-    return
-fi
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 # Useful bash options
 shopt -s cdable_vars      # if cd arg is not valid, assumes its a var defining a dir
@@ -31,10 +26,16 @@ PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(parse_git_branch)\[\03
 # Standard PS1
 #PS1='[\u@\h \W]\$ '
 
-# Bash-completion
+# Enable bash-completion in case it isn't already
 if [ -f /etc/bash_completion ]
 then
     . /etc/bash_completion
+fi
+
+# Set dircolors
+if [ -x /usr/bin/dircolors ]
+then
+    eval "`dircolors -b`"
 fi
 
 # Change the window title of X terminals
@@ -45,10 +46,10 @@ case $TERM in
     screen*)
     PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}    \033\\"'
     ;;
-esac 
+esac
 
 # Exports
-export PATH=$PATH:/usr/local/bin                                                                                         
+export PATH=$PATH:/usr/local/bin
 if [[ -d $HOME/bin ]]; then
     export PATH=$PATH:$HOME/bin
 fi
@@ -71,8 +72,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'                           
-export LESS_TERMCAP_so=$'\E[01;44;33m'                                 
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
@@ -111,7 +112,7 @@ function instaweb() {
             cd "$1"
             python -m SimpleHTTPServer
             cd -
-        else 
+        else
             python -m SimpleHTTPServer "$1"
         fi
     else
