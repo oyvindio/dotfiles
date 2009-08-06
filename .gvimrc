@@ -1,4 +1,3 @@
-" .gvimrc
 source ~/.vimrc
 
 " Set colorscheme
