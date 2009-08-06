@@ -1,6 +1,6 @@
 # Add the dotfiles we want link.sh to link here:
 DOTFILES=(
-    .bashrc.oyvindio
+    .bashrc.custom
     .emacs.d
     .gitconfig
     .gvimrc
