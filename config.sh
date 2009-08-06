@@ -4,6 +4,7 @@ DOTFILES=(
     .emacs.d
     .gitconfig
     .gvimrc
+    .irbrc
     .screenrc
     .toprc
     .vimrc

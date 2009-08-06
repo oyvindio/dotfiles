@@ -19,7 +19,7 @@ shopt -s hostcomplete     # attempt hostname expansion when @ is at the beginnin
 shopt -s nocaseglob       # pathname expansion will be treated as case-insensitive
 
 # exports
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin                                                                                         
 if [[ -d $HOME/bin ]]; then
     export PATH=$PATH:$HOME/bin
 fi
@@ -36,8 +36,10 @@ export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export OOO_FORCE_DESKTOP=gnome soffice
+export GPGKEY=73087186
+export XDG_DATA_HOME="$HOME/.local/share"
 
-# colorize manpages in less
+#less manpage colors
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -46,21 +48,26 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# useful aliases
+# Aliases
 alias ls='ls --color=auto'                      # add colors
 alias ll='ls -lh'                               # long listing
 alias la='ls -lah'                              # include hidden files
 alias lr='ls -lRh'                              # recursive ls
 alias screen='screen -U'
 alias grep="grep -n --color=auto"               # add line numbers and colors
+alias egrep="grep -n --color=auto"               # add line numbers and colors
+#alias vi='vim'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias hist='history | grep $1'                  # search trough bash history
-alias emacs='emacs-snapshot -nw'
+#alias emacs='emacs-snapshot -nw'
 
 alias ag='apt-get'
 alias ac='apt-cache'
+
+alias hinux="ssh sunn@hinux.hin.no"
+#alias ff-dev="/usr/bin/firefox -no-remote -P extdev"
 
 # Prompt
 function parse_git_branch
@@ -74,7 +81,7 @@ PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(parse_git_branch)\[\03
 # Standard PS1
 #PS1='[\u@\h \W]\$ '
 
-# enable bash-completion in case it's not enabled yet
+# Bash-completion
 if [ -f /etc/bash_completion ]
 then
     . /etc/bash_completion
@@ -90,7 +97,6 @@ case $TERM in
     ;;
 esac 
 
-# useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
 function calc() { echo "$*" | bc; }
 function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
@@ -99,13 +105,18 @@ function mktar() { tar czf "${1%%/}.tar.gz" "${1%%/}/"; }
 function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 function myip() { wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1; }
 function instaweb() {
-    if [ -d "$1" ]
+    if [ $# -gt 0 ]
     then
-        cd "$1"
-        python -m SimpleHTTPServer
-        cd -
+        if [ -d "$1" ]
+        then
+            cd "$1"
+            python -m SimpleHTTPServer
+            cd -
+        else 
+            python -m SimpleHTTPServer "$1"
+        fi
     else
-        python -m SimpleHTTPServer "$1"
+        python -m SimpleHTTPServer
     fi
 }
 

@@ -1,5 +1,4 @@
 " .vimrc
-
 set nocompatible                 " Disable VI compatibility mode
 set ruler                       " Always show cursor position
 set showcmd                     " show partial command in status line
@@ -32,7 +31,7 @@ set t_Co=256                    " tell vim that the terminal we're using
 set vb
 set t_vb=
 
-"Save backups of buffers in .vim-backup
+"Save backups of buffers in .vimbackup
 set autowrite
 set writebackup
 set backup backupdir=$HOME/.vim-backup
@@ -53,7 +52,7 @@ set expandtab                   " Use spaces, not tab characters
 set autoindent                  " Autoindent 'intelligently'
 set tabstop=4                   " Show tab characters as 4 spaces
 set softtabstop=4               " Show tab characters as 4 spaces
-set shiftwidth=4                " Number of spaces to (auto)indent
+"set shiftwidth=4                " Number of spaces to (auto)indent
 
 " Tab completion in the command line
 set wildmenu                    " Enable command line tab completion

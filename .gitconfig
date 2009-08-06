@@ -6,14 +6,13 @@
 	status = auto
 	branch = auto
 [alias]
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    lg = log -p
-    who = shortlog -s --
-    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-    serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+	who = shortlog -s --
 
-
+[pack]
+	threads = 0

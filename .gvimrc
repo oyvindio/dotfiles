@@ -1,3 +1,4 @@
+" .gvimrc
 source ~/.vimrc
 
 " Set colorscheme
@@ -15,5 +16,3 @@ set guifont=Droid\ Sans\ Mono\ 13
 " Set window size
 set lines=50
 set columns=120
-
-set cursorline "highlight cursor line
