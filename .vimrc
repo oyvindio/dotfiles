@@ -32,10 +32,10 @@ set t_Co=256                    " tell vim that the terminal we're using
 set vb
 set t_vb=
 
-"Save backups of buffers in .vim/backup
+"Save backups of buffers in .vim-backup
 set autowrite
 set writebackup
-set backup backupdir=$HOME/.vim/backup
+set backup backupdir=$HOME/.vim-backup
 
 " Search
 set hlsearch                    " Highlight matches
