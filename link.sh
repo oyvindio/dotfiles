@@ -25,7 +25,7 @@ function link_file() {
 
     if [ -h "$HOME/$1" ]
     then
-        echo "$HOME/$1 is already linked!"
+        ln -svf "$file" "$HOME/"
     else
         if [ ! -e "$HOME/$1" ]
         then
