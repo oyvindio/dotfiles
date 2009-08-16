@@ -27,7 +27,11 @@ function rm_file() {
 
 # link a file, unless it exists
 function link_file() {
-    file="$SRC/$dotfile"
+    file="$SRC/$1"
+    if [ "$1" == ".Xdefaults" ]
+    then
+        file="$SRC/$1-$(hostname)"
+    fi
 
     if [ -h "$HOME/$1" ]
     then
