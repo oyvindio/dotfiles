@@ -28,20 +28,22 @@ function rm_file() {
 # link a file, unless it exists
 function link_file() {
     file="$SRC/$1"
+    dst="$HOME/$1"
+
     if [ "$1" == ".Xdefaults" ]
     then
-        file="$SRC/$1-$(hostname)"
+        dst="$HOME/$1-$(hostname)"
     fi
 
-    if [ -h "$HOME/$1" ]
+    if [ -h "$dst" ]
     then
-        ln -snvf "$file" "$HOME/"
+        ln -snvf "$file" "$dst"
     else
-        if [ ! -e "$HOME/$1" ]
+        if [ ! -e "$dst" ]
         then
-            ln -snv "$file" "$HOME/"
+            ln -snv "$file" "$dst"
         else
-            echo "$HOME/$1 already exists, remove it first!"
+            echo "$dst already exists, remove it first!"
         fi
     fi
 }
