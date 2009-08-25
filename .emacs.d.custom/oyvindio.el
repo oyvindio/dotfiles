@@ -12,3 +12,4 @@
 
 ;; set color theme
 (color-theme-railscasts)
+(highline-mode)
