@@ -89,8 +89,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias hist='history | grep $1'                  # search trough bash history
 alias e=$EDITOR
-alias ge="$EDITOR -c"
-
+alias ec="emacsclient -c"
 alias ag='apt-get'
 alias ac='apt-cache'
 
