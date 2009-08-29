@@ -12,4 +12,9 @@
 
 ;; set color theme
 (color-theme-railscasts)
-(highline-mode)
+
+;; highlight the current line
+;;(highline-mode)
+
+;; set c indentation mode to k&r
+(setq c-default-style "k&r")
