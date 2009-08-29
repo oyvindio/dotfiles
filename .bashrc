@@ -60,12 +60,12 @@ fi
 export PAGER=less
 export MANPAGER=less
 export BROWSER=firefox
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR="emacsclient"
+export VISUAL=$EDITOR
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
-export OOO_FORCE_DESKTOP=gnome soffice
+export OOO_FORCE_DESKTOP="gnome soffice"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # colors for manpages in less
@@ -88,7 +88,8 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias hist='history | grep $1'                  # search trough bash history
-#alias emacs='emacs-snapshot -nw'
+alias e=$EDITOR
+alias ge="$EDITOR -c"
 
 alias ag='apt-get'
 alias ac='apt-cache'
