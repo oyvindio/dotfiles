@@ -60,7 +60,7 @@ fi
 export PAGER=less
 export MANPAGER=less
 export BROWSER=firefox
-export EDITOR="emacsclient"
+export EDITOR="emacsclient -nw"
 export VISUAL=$EDITOR
 export HISTSIZE=10000
 export HISTFILESIZE=10000
@@ -88,9 +88,8 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias hist='history | grep $1'                  # search trough bash history
-alias e=$EDITOR
-alias ec="$EDITOR -c"
-alias ecn="$EDITOR -c -n"
+alias e="emacsclient -nw"
+alias ex="emacsclient -c -n"
 alias ag='apt-get'
 alias ac='apt-cache'
 
