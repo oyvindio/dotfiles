@@ -4,14 +4,14 @@ xterm*geometry:         120x40
 
 ! urxvt !
 !URxvt*termName:         rxvt-unicode
-URxvt*termName:        rxvt-256color
+!URxvt*termName:        rxvt-256color
 URxvt*geometry:         120x40
 URxvt*saveLines:        30000
 URxvt*visualBell:       false
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher
-URxvt*urlLauncher:      firefox
+URxvt*urlLauncher:      opera
 URxvt*matcher.button:   1
 ! Colors
 URxvt*background:       #222222
@@ -44,8 +44,8 @@ URxvt*color15: #ffffff
 
 
 ! Fonts
-URxvt*font: xft:Droid Sans Mono:size=11
-URxvt*boldFont: xft:Droid Sans Mono:size=11
+URxvt*font: xft:Droid Sans Mono:size=10
+URxvt*boldFont: xft:Droid Sans Mono:size=10
 
 ! Emacs
 emacs.FontBackend: xft
