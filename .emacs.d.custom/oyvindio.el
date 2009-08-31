@@ -18,3 +18,6 @@
 
 ;; set c indentation mode to k&r
 (setq c-default-style "k&r")
+
+;; disable visual bell
+(setq visible-bell nil)
