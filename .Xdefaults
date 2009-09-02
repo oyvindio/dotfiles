@@ -44,8 +44,8 @@ URxvt*color15: #ffffff
 
 
 ! Fonts
-URxvt*font: xft:Droid Sans Mono:size=10
-URxvt*boldFont: xft:Droid Sans Mono:size=10
+URxvt*font: xft:Droid Sans Mono:size=11
+URxvt*boldFont: xft:Droid Sans Mono:size=11
 
 ! Emacs
 emacs.FontBackend: xft
