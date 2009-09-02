@@ -67,6 +67,7 @@ export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export OOO_FORCE_DESKTOP="gnome soffice"
 export XDG_DATA_HOME="$HOME/.local/share"
+export IGNOREEOF=3 # ignore 3 EOF (^D) before exiting
 
 # colors for manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
