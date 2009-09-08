@@ -11,8 +11,9 @@ URxvt*visualBell:       false
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher
-URxvt*urlLauncher:      opera
+URxvt*urlLauncher:      firefox
 URxvt*matcher.button:   1
+URxvt*iconFile:         $HOME/.icons/gnome-brave/scalable/apps/gnome-terminal.svg
 ! Colors
 URxvt*background:       #222222
 URxvt*cursorColor:      green
