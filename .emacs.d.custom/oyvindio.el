@@ -10,14 +10,19 @@
 ;; use spaces for indentation by default
 (setq-default indent-tabs-mode nil)
 
+;; set default tab size to 4
+(setq default-tab-width 4)
+
 ;; set color theme
-(color-theme-railscasts)
+;;(color-theme-railscasts)
+(color-theme-vivid-chalk)
 
 ;; highlight the current line
-;;(highline-mode)
+(highline-mode)
 
 ;; set c indentation mode to k&r
 (setq c-default-style "k&r")
+(setq c-basic-offset 4) ; but with 4 spaces
 
 ;; disable visual bell
 (setq visible-bell nil)
