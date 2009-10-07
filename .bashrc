@@ -1,3 +1,9 @@
+# source ~/.bash_profile if it exists
+if [ -e ~/.bash_profile ]
+    then
+    . ~/.bash_profile
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -62,6 +68,7 @@ export MANPAGER=less
 export BROWSER=firefox
 export EDITOR="emacsclient -nw"
 export VISUAL=$EDITOR
+export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
