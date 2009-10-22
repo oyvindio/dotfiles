@@ -11,7 +11,7 @@
 	br = branch
 	co = checkout
 	df = diff
-	lg = log -p
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	who = shortlog -s --
 
 [pack]
