@@ -21,16 +21,45 @@ shopt -s nocaseglob       # pathname expansion will be treated as case-insensiti
 
 
 # Prompt
-function parse_git_branch
+# stolen from http://github.com/mheffner/dotfiles/blob/master/bashrc/bashrc
+function traildir()
 {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo " ${ref#refs/heads/}"
+    # traildir() truncates the prompt $2 to the $1 inner directories;
+    # example: using $(traildir 2 $PWD) in your $PS1 will show a truncated
+    # prompt for any subdirectory nesting deeper than 2 levels
+    local n=$1 dir=$2
+    local sl tildedir homelen shifted traildir
+    local oldifs=$IFS
+ 
+    tildedir=${dir#$HOME}
+    if ! [[ "$tildedir" == "$dir" ]]; then
+            # Special break out case
+            [[ -z "$tildedir" ]] && { echo "~"; return 0; }
+ 
+            sl="~/"
+    else
+            sl="/"
+    fi
+ 
+    set -- ${HOME//\// }
+    homelen=$#
+ 
+    shifted=0
+    IFS="/"
+    set -- ${tildedir/\//}
+    if [[ $# -gt $n ]]; then
+            shifted=$(($# - $n))
+            shift $shifted
+            traildir="$sl<$shifted>/$*"
+    else
+            traildir="$sl$*"
+    fi
+ 
+    IFS=$oldifs
+    echo $traildir
 }
-#export PS1='\[\033[0;34m\]\A \[\033[00m\]\w \[\033[01;31m\]$(parse_git_branch)\[\033[00m\] $ '
-# Colorized PS1 with git branch indication
-PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(parse_git_branch)\[\033[0m\] $ '
-# Standard PS1
-#PS1='[\u@\h \W]\$ '
+# Colorized prompt with git branch indication
+PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] $(traildir 2 $PWD)\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
 
 # Enable bash-completion in case it isn't already
 if [ -f /etc/bash_completion ]
