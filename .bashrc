@@ -104,6 +104,7 @@ export HISTCONTROL=ignoredups
 export OOO_FORCE_DESKTOP="gnome soffice"
 export XDG_DATA_HOME="$HOME/.local/share"
 export IGNOREEOF=1 # ignore 1 EOF (^D) before exiting
+export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted changes in prompt
 
 # colors for manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
