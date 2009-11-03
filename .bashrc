@@ -94,6 +94,9 @@ export PATH=$PATH:/usr/local/bin
 if [[ -d $HOME/.local/bin ]]; then
     export PATH=$PATH:$HOME/.local/bin
 fi
+if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
+    export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
+fi
 
 export PAGER=less
 export MANPAGER=less
