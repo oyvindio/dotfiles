@@ -136,6 +136,7 @@ alias e="emacsclient -nw"
 alias ex="emacsclient -c -n"
 alias ag='apt-get'
 alias ac='apt-cache'
+alias gh='github'
 
 #alias ff-dev="/usr/bin/firefox -no-remote -P extdev"
 
