@@ -73,6 +73,12 @@ then
     eval "`dircolors -b`"
 fi
 
+# enable compleat, if installed
+if [ -f /usr/local/share/compleat-1.0/compleat_setup ]
+then
+    . /usr/local/share/compleat-1.0/compleat_setup
+fi
+
 # Change the window title of X terminals
 case $TERM in
     aterm|eterm|*xterm*|konsole|kterm|rxvt*|wterm)
