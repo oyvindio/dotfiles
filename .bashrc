@@ -21,45 +21,8 @@ shopt -s nocaseglob       # pathname expansion will be treated as case-insensiti
 
 
 # Prompt
-# stolen from http://github.com/mheffner/dotfiles/blob/master/bashrc/bashrc
-function traildir()
-{
-    # traildir() truncates the prompt $2 to the $1 inner directories;
-    # example: using $(traildir 2 $PWD) in your $PS1 will show a truncated
-    # prompt for any subdirectory nesting deeper than 2 levels
-    local n=$1 dir=$2
-    local sl tildedir homelen shifted traildir
-    local oldifs=$IFS
- 
-    tildedir=${dir#$HOME}
-    if ! [[ "$tildedir" == "$dir" ]]; then
-            # Special break out case
-            [[ -z "$tildedir" ]] && { echo "~"; return 0; }
- 
-            sl="~/"
-    else
-            sl="/"
-    fi
- 
-    set -- ${HOME//\// }
-    homelen=$#
- 
-    shifted=0
-    IFS="/"
-    set -- ${tildedir/\//}
-    if [[ $# -gt $n ]]; then
-            shifted=$(($# - $n))
-            shift $shifted
-            traildir="$sl<$shifted>/$*"
-    else
-            traildir="$sl$*"
-    fi
- 
-    IFS=$oldifs
-    echo $traildir
-}
 # Colorized prompt with git branch indication
-PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] $(traildir 2 $PWD)\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
+PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
 
 # Enable bash-completion in case it isn't already
 if [ -f /etc/bash_completion ]
@@ -111,6 +74,7 @@ export OOO_FORCE_DESKTOP="gnome soffice"
 export XDG_DATA_HOME="$HOME/.local/share"
 export IGNOREEOF=1 # ignore 1 EOF (^D) before exiting
 export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted changes in prompt
+export PROMPT_DIRTRIM=3 # truncate long paths in PS1
 
 # colors for manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
