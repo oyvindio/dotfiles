@@ -17,7 +17,7 @@
    '(color-theme-railscasts
      ((background-color . "#232323")
       (background-mode . dark)
-      (cursor-color . "white")
+      (cursor-color . "green")
       (foreground-color . "#E6E1DC"))
      (default ((t (nil))))
      (bold ((t (:bold t))))

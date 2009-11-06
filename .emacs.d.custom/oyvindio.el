@@ -18,7 +18,7 @@
 ;;(color-theme-vivid-chalk)
 
 ;; highlight the current line
-(highline-mode)
+;(highline-mode)
 
 ;; set c indentation mode to k&r
 (setq c-default-style "k&r")
