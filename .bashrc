@@ -166,33 +166,3 @@ function x() {
         fi
     done
 }
-
-# start, stop, restart, reload - simple daemon management
-# usage: start <daemon-name>
-function start() {
-  for arg in $*
-  do
-    sudo /etc/init.d/$arg start
-  done
-}
-
-function stop() {
-  for arg in $*
-  do
-    sudo /etc/init.d/$arg stop
-  done
-}
-
-function restart() {
-  for arg in $*
-  do
-    sudo /etc/init.d/$arg restart
-  done
-}
-
-function reload() {
-  for arg in $*
-  do
-    sudo /etc/init.d/$arg reload
-  done
-}
