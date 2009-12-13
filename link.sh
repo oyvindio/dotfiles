@@ -4,10 +4,13 @@
 # Symlinks config files specified in config.sh to $HOME/                       #
 ################################################################################
 
-
+shopt -s extglob
+shopt -s dotglob
 
 ACTION_CLEAN="clean"
-ACTION_HELP="help"
+ACTION_DRY_RUN="dry-run"
+
+DOTFILE_GLOB=!(\.git|\.gitmodules|link\.sh|README\.markdown)
 
 if [ "$(dirname $0)" == "." ]
 then
@@ -15,7 +18,6 @@ then
 else
     SRC="$(pwd)/$(dirname $0)"
 fi
-. "$SRC/config.sh"
 
 # remove a link, if it exists
 function rm_file() {
@@ -61,14 +63,20 @@ function update_emacs-starter-kit() {
 
 case "$1" in
     "$ACTION_CLEAN")
-        for dotfile in "${DOTFILES[@]}"
+        for dotfile in $DOTFILE_GLOB
         do
             rm_file "$dotfile"
         done
         ;;
+    "$ACTION_DRY_RUN")
+        for dotfile in $DOTFILE_GLOB
+        do
+            echo "will be linked: $dotfile"
+        done
+        ;;
     *)
         update_emacs-starter-kit
-        for dotfile in "${DOTFILES[@]}"
+        for dotfile in "$DOTFILE_GLOB"
         do
             link_file "$dotfile"
         done
