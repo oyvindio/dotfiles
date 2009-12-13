@@ -76,7 +76,7 @@ case "$1" in
         ;;
     *)
         update_emacs-starter-kit
-        for dotfile in "$DOTFILE_GLOB"
+        for dotfile in $DOTFILE_GLOB
         do
             link_file "$dotfile"
         done
