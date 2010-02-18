@@ -16,3 +16,5 @@
 
 [pack]
 	threads = 0
+[core]
+	autocrlf = input
