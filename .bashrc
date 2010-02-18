@@ -1,9 +1,3 @@
-# source ~/.bash_profile if it exists
-if [ -e ~/.bash_profile ]
-    then
-    . ~/.bash_profile
-fi
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -59,6 +53,10 @@ if [[ -d $HOME/.local/bin ]]; then
 fi
 if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
     export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
+fi
+
+if [[ -d /usr/lib/jvm/java-6-sun ]]; then
+    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
 fi
 
 export PAGER=less
