@@ -49,7 +49,7 @@ esac
 # Exports
 export PATH=$PATH:/usr/local/bin
 if [[ -d $HOME/.local/bin ]]; then
-    export PATH=$PATH:$HOME/.local/bin
+    export PATH=$HOME/.local/bin:$PATH
 fi
 if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
     export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
