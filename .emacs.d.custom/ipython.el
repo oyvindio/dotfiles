@@ -126,6 +126,7 @@
 ;;      - look into init priority issues with `py-python-command' (if it's set
 ;;        via custom)
 
+(setq py-python-command-args '(""))
 
 ;;; Code
 (require 'cl)
