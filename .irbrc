@@ -1,4 +1,8 @@
 begin
+  # tab completion
+  require 'irb/completion'
+  ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+
   # we need rubygems first
   require 'rubygems'
 
