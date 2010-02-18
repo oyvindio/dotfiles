@@ -30,15 +30,18 @@
 ;; disable visual bell
 (setq visible-bell nil)
 
+;; enable column numbers
+(column-number-mode t)
 
 ;; keybinds
 ;------------------------------------------------------------------------------
 (global-set-key (kbd "C-x c") 'comment-or-uncomment-region)
-
+(global-set-key  [C-tab] 'other-window)
+(global-set-key (kbd "C-R") 'replace-string)
+(global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
 
 ;; defuns
 ;------------------------------------------------------------------------------
-
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -54,3 +57,29 @@
       (rename-buffer new-name)
       (set-visited-file-name new-name)
       (set-buffer-modified-p nil))))))
+
+;; source: http://www.emacswiki.org/emacs/InsertAnyDate
+(require 'calendar)
+(defun insdate-insert-any-date (&optional days)
+  (interactive "p*")
+  (insert
+   (calendar-date-string
+    (calendar-gregorian-from-absolute
+     (+ (calendar-absolute-from-gregorian (calendar-current-date))
+        days)))))
+
+;; source: http://www.emacswiki.org/emacs/InsertingTodaysDate
+(require 'calendar)
+(defun insdate-insert-current-date (&optional omit-day-of-week-p)
+  "Insert today's date using the current locale.
+  With a prefix argument, the date is inserted without the day of
+  the week."
+  (interactive "P*")
+  (insert (calendar-date-string (calendar-current-date) nil
+                                omit-day-of-week-p)))
+
+;; source: http://github.com/defunkt/emacs/blob/master/defunkt/defuns.el
+(defun gist-buffer-confirm (&optional private)
+  (interactive "P")
+  (when (yes-or-no-p "Are you sure you want to Gist this buffer? ")
+    (gist-region-or-buffer private)))
