@@ -157,6 +157,7 @@ function x() {
                 *.zip)      unzip $arg        ;;
                 *.jar)      jar xvf $arg      ;;
                 *.Z)        uncompress $arg   ;;
+                *.xpi)      unzip $arg        ;;
                 *)          echo "'$arg' cannot be extracted via x (extract)" ;;
             esac
         else
