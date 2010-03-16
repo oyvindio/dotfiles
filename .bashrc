@@ -165,3 +165,14 @@ function x() {
         fi
     done
 }
+
+# send a libnotify notification based on exit status when a command finishes
+function notify () {
+    ($@)
+    if [ $? = 0 ]
+    then
+        notify-send -i face-smile-big "$@ finished successfully!"
+    else
+        notify-send -i face-angry -u critical "$@ failed!"
+    fi
+}
