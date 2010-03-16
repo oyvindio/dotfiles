@@ -51,4 +51,4 @@ URxvt*boldFont: xft:Droid Sans Mono:size=11
 ! Emacs
 emacs.FontBackend: xft
 emacs.verticalScrollBars: off
-Emacs*Font: Droid Sans Mono-9:antialias=True
+Emacs*Font: Droid Sans Mono-12:antialias=True
