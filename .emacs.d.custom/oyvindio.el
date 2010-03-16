@@ -84,3 +84,9 @@
   (interactive "P")
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ")
     (gist-region-or-buffer private)))
+
+
+(defun diw-word-count ()
+  "Count words in buffer, excluding (X)HTML markup"
+  (interactive)
+  (shell-command-on-region (point-min) (point-max) "diw-wc.py"))
