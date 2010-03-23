@@ -18,3 +18,7 @@
 	threads = 0
 [core]
 	autocrlf = input
+[branch]
+    autosetupmerge = always
+[push]
+    default = tracking
