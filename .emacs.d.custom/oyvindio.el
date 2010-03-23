@@ -33,6 +33,10 @@
 ;; enable column numbers
 (column-number-mode t)
 
+;; ANSI colors for M-x shell
+;(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 ;; keybinds
 ;------------------------------------------------------------------------------
 (global-set-key (kbd "C-x c") 'comment-or-uncomment-region)
@@ -40,6 +44,7 @@
 (global-set-key (kbd "C-r") 'replace-string)
 (global-set-key (kbd "C-c C-f") 'fill-region)
 (global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
+(global-set-key (kbd "C-x m") 'shell) ; rebind starter-kit eshell->shell
 
 ;; defuns
 ;------------------------------------------------------------------------------
@@ -90,3 +95,4 @@
   "Count words in buffer, excluding (X)HTML markup"
   (interactive)
   (shell-command-on-region (point-min) (point-max) "diw-wc.py"))
+
