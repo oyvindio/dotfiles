@@ -10,7 +10,7 @@ shopt -s dotglob
 ACTION_CLEAN="clean"
 ACTION_DRY_RUN="dry-run"
 
-DOTFILE_GLOB=!(\.git|\.gitmodules|link\.sh|README\.markdown)
+DOTFILE_GLOB=!(\.git|\.gitmodules|link\.sh|README\.mkdn)
 
 if [ "$(dirname $0)" == "." ]
 then
