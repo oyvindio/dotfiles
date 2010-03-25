@@ -84,6 +84,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Useful aliases
+alias ..="cd .."
 alias ls='ls --color=auto'                      # add colors
 alias ll='ls -lh'                               # long listing
 alias la='ls -lah'                              # include hidden files
