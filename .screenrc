@@ -15,7 +15,7 @@ hardstatus alwayslastline
 hardstatus string "%{= Wk} %?%-Lw%?%{= kW} %n*%f %t %{= Wk}%?%+Lw%? %{= Wk}%=%{= Wk} %C%a %d-%m-%Y %{= Wk}" # white bar
 
 ## keybindings
-escape ^\\              # change escape key from C-a to C-\
+escape ^oo              # change escape key from C-a to C-o
 bindkey -k k9 detach    # F9:   detach
 bindkey -k k; copy      # F10:  copy mode
 bindkey -k F1 prev      # F11:  prev window
