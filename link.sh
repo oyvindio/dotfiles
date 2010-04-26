@@ -50,17 +50,6 @@ function link_file() {
     fi
 }
 
-function update_emacs-starter-kit() {
-    pushd "$SRC"
-    rm -v "$SRC/.emacs.d/$USER"
-
-    git submodule init
-    git submodule update
-
-    ln -snvf "$SRC/.emacs.d.custom" "$SRC/.emacs.d/$USER"
-    popd
-}
-
 case "$1" in
     "$ACTION_CLEAN")
         for dotfile in $DOTFILE_GLOB
@@ -75,7 +64,6 @@ case "$1" in
         done
         ;;
     *)
-        update_emacs-starter-kit
         for dotfile in $DOTFILE_GLOB
         do
             link_file "$dotfile"
