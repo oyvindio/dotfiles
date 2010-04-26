@@ -160,6 +160,7 @@ function x() {
                 *.Z)        uncompress $arg   ;;
                 *.xpi)      unzip $arg        ;;
                 *.7z)       7z x $arg         ;;
+                *.crx)       unzip $arg        ;;
                 *)          echo "'$arg' cannot be extracted via x (extract)" ;;
             esac
         else
