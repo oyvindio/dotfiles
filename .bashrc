@@ -59,6 +59,12 @@ if [[ -d /usr/lib/jvm/java-6-sun ]]; then
     export JAVA_HOME="/usr/lib/jvm/java-6-sun"
 fi
 
+# use virtualenvwrapper
+if [[ -d $HOME/.virtualenvs ]]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    . /usr/local/bin/virtualenvwrapper.sh
+fi
+
 export PAGER=less
 export MANPAGER=less
 export BROWSER=firefox
