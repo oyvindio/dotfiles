@@ -89,7 +89,6 @@ alias ls='ls --color=auto'                      # add colors
 alias ll='ls -lh'                               # long listing
 alias la='ls -lah'                              # include hidden files
 alias lr='ls -lRh'                              # recursive ls
-alias screen='screen -U'
 alias grep="grep -n --color=auto"               # add line numbers and colors
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -97,9 +96,6 @@ alias rm='rm -iv'
 alias hist='history | grep $1'                  # search trough bash history
 alias e="emacsclient -nw"
 alias ex="emacsclient -c -n"
-alias ag='apt-get'
-alias ac='apt-cache'
-alias gh='github'
 alias go='gnome-open'
 
 #alias ff-dev="/usr/bin/firefox -no-remote -P extdev"
