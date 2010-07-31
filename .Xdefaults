@@ -11,7 +11,7 @@ URxvt*visualBell:       false
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher
-URxvt*urlLauncher:      firefox
+URxvt*urlLauncher:      chromium-browser
 URxvt*matcher.button:   1
 
 ! Colors
