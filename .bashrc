@@ -2,19 +2,19 @@
 [ -z "$PS1" ] && return
 
 # Useful bash options
-shopt -s cdable_vars      # if cd arg is not valid, assumes its a var defining a dir
-shopt -s cdspell          # autocorrects cd misspellings
-shopt -s checkwinsize     # update the value of LINES and COLUMNS after each command if altered
-shopt -s cmdhist          # save multi-line commands in history as single line
-shopt -s dotglob          # include dotfiles in pathname expansion
-shopt -s expand_aliases   # expand aliases
-shopt -s extglob          # enable extended pattern-matching features
-shopt -s histappend       # append to (not overwrite) the history file
-shopt -s hostcomplete     # attempt hostname expansion when @ is at the beginning ofa word
-shopt -s nocaseglob       # pathname expansion will be treated as case-insensitive
+shopt -s cdable_vars # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s checkwinsize # update the value of LINES and COLUMNS after each command if altered
+shopt -s cmdhist # save multi-line commands in history as single line
+shopt -s dotglob # include dotfiles in pathname expansion
+shopt -s expand_aliases # expand aliases
+shopt -s extglob # enable extended pattern-matching features
+shopt -s histappend # append to (not overwrite) the history file
+shopt -s histverify # readline goodness for history substitutions
+shopt -s histreedit # allow re-editing failed history substitutions
+shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
+shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
 
-
-# Prompt
 # Colorized prompt with git branch indication
 PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
 
@@ -30,12 +30,6 @@ then
     eval "`dircolors -b`"
 fi
 
-# enable compleat, if installed
-if [ -f /usr/local/share/compleat-1.0/compleat_setup ]
-then
-    . /usr/local/share/compleat-1.0/compleat_setup
-fi
-
 # Change the window title of X terminals
 case $TERM in
     aterm|eterm|*xterm*|konsole|kterm|rxvt*|wterm)
@@ -47,14 +41,18 @@ case $TERM in
 esac
 
 # Exports
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin # system local stuff
+# user local stuff
 if [[ -d $HOME/.local/bin ]]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
+
+# android sdk tools
 if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
     export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
 fi
 
+# some java programs rely on this to find the jre or jdk
 if [[ -d /usr/lib/jvm/java-6-sun ]]; then
     export JAVA_HOME="/usr/lib/jvm/java-6-sun"
 fi
@@ -76,11 +74,11 @@ export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export OOO_FORCE_DESKTOP="gnome soffice"
 export XDG_DATA_HOME="$HOME/.local/share"
-export IGNOREEOF=1 # ignore 1 EOF (^D) before exiting
-export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted changes in prompt
-export PROMPT_DIRTRIM=3 # truncate long paths in PS1
+export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
+export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted git changes in prompt
+export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
 
-# colors for manpages in less
+# colorize manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -90,21 +88,18 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Useful aliases
-alias ..="cd .."
-alias ls='ls --color=auto'                      # add colors
-alias ll='ls -lh'                               # long listing
-alias la='ls -lah'                              # include hidden files
-alias lr='ls -lRh'                              # recursive ls
-alias grep="grep -n --color=auto"               # add line numbers and colors
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='rm -iv'
-alias hist='history | grep $1'                  # search trough bash history
-alias e="emacsclient -nw"
-alias ex="emacsclient -c -n"
-alias go='gnome-open'
-
-#alias ff-dev="/usr/bin/firefox -no-remote -P extdev"
+alias ..="cd .." # lazy
+alias ls='ls --color=auto' # add colors
+alias ll='ls -lh' # long listing
+alias la='ls -lah' # include hidden files
+alias lr='ls -lRh' # recursive ls
+alias cp='cp -iv' # verbose + idiot proofing...
+alias mv='mv -iv' # verbose + idiot proofing...
+alias rm='rm -iv' # verbose + idiot proofing...
+alias e="emacsclient -nw" # open emacs on the commandline
+alias ex="emacsclient -c -n" # open an emacs window
+alias go='gnome-open' # try to open a file with an appropriate program
+#alias ff-dev="/usr/bin/firefox -no-remote -P extdev" # add-on dev profile
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
