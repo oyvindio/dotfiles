@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# tty flow control (^s and ^q) is more trouble than it's worth; disable it
+stty -ixon -ixoff
+
 # Useful bash options
 shopt -s cdable_vars # if cd arg is not valid, assumes its a var defining a dir
 shopt -s cdspell # autocorrects cd misspellings
