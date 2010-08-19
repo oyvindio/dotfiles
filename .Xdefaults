@@ -45,10 +45,13 @@ URxvt*color15: #ffffff
 
 
 ! Fonts
-URxvt*font: xft:Droid Sans Mono:size=11
-URxvt*boldFont: xft:Droid Sans Mono:size=11
+!URxvt*font: xft:Droid Sans Mono:size=11
+!URxvt*boldFont: xft:Droid Sans Mono:size=11
+URxvt*font: xft:Droid Sans Mono Slashed:size=11
+URxvt*boldFont: xft:Droid Sans Mono Slashed:size=11
 
 ! Emacs
 emacs.FontBackend: xft
 emacs.verticalScrollBars: off
-Emacs*Font: Droid Sans Mono-12:antialias=True
+!Emacs*Font: Droid Sans Mono-12:antialias=True
+Emacs*Font: Droid Sans Mono Slashed-12:antialias=True
