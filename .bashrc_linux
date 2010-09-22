@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# bash completion
+if [ -f /etc/bash_completion ]
+then
+    . /etc/bash_completion
+fi
+
+# Exports
+export PATH=$PATH:/usr/local/bin # system local stuff
+# user local stuff
+if [[ -d $HOME/.local/bin ]]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
+# some java programs rely on this to find the jre or jdk
+if [[ -d /usr/lib/jvm/java-6-sun ]]; then
+    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+fi
+
+# android sdk tools
+if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
+    export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
+fi
+export XDG_DATA_HOME="$HOME/.local/share"
+export OOO_FORCE_DESKTOP="gnome soffice"
+
+# Aliases
+alias ls='ls --color=auto' # add colors (gnu ls)
+alias go='gnome-open' # try to open a file with an appropriate program
+#alias ff-dev="/usr/bin/firefox -no-remote -P extdev" # add-on dev profile
+
+# Functions
+# send a libnotify notification based on exit status when a command finishes
+function notify () {
+    ($@)
+    if [ $? = 0 ]
+    then
+        notify-send -i face-smile-big "$@ finished successfully!"
+    else
+        notify-send -i face-angry -u critical "$@ failed!"
+    fi
+}
+

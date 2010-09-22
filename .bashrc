@@ -21,11 +21,14 @@ shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
 # Colorized prompt with git branch indication
 PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
 
-# Enable bash-completion in case it isn't already
-if [ -f /etc/bash_completion ]
-then
-    . /etc/bash_completion
-fi
+case $(uname -s) in
+    Linux)
+        . ~/.bashrc_linux
+        ;;
+    Darwin)
+        . ~/.bashrc_osx
+        ;;
+esac
 
 # Set dircolors
 if [ -x /usr/bin/dircolors ]
@@ -44,22 +47,6 @@ case $TERM in
 esac
 
 # Exports
-export PATH=$PATH:/usr/local/bin # system local stuff
-# user local stuff
-if [[ -d $HOME/.local/bin ]]; then
-    export PATH=$HOME/.local/bin:$PATH
-fi
-
-# android sdk tools
-if [[ -d $HOME/.local/lib/android-sdk-linux/tools ]]; then
-    export PATH=$PATH:$HOME/.local/lib/android-sdk-linux/tools
-fi
-
-# some java programs rely on this to find the jre or jdk
-if [[ -d /usr/lib/jvm/java-6-sun ]]; then
-    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
-fi
-
 # use virtualenvwrapper
 if [[ -d $HOME/.virtualenvs ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
@@ -68,15 +55,12 @@ fi
 
 export PAGER=less
 export MANPAGER=less
-export BROWSER=firefox
 export EDITOR="emacsclient -nw"
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
-export OOO_FORCE_DESKTOP="gnome soffice"
-export XDG_DATA_HOME="$HOME/.local/share"
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
 export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted git changes in prompt
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
@@ -92,7 +76,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Useful aliases
 alias ..="cd .." # lazy
-alias ls='ls --color=auto' # add colors
 alias ll='ls -lh' # long listing
 alias la='ls -lah' # include hidden files
 alias lr='ls -lRh' # recursive ls
@@ -101,8 +84,6 @@ alias mv='mv -iv' # verbose + idiot proofing...
 alias rm='rm -iv' # verbose + idiot proofing...
 alias e="emacsclient -nw" # open emacs on the commandline
 alias ex="emacsclient -c -n" # open an emacs window
-alias go='gnome-open' # try to open a file with an appropriate program
-#alias ff-dev="/usr/bin/firefox -no-remote -P extdev" # add-on dev profile
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
@@ -126,17 +107,6 @@ function instaweb() {
         fi
     else
         python -m SimpleHTTPServer
-    fi
-}
-
-# send ssh public key to some remote host
-function sendkey () {
-    if [ -f ~/.ssh/id_rsa.pub ]
-    then
-        if [ $# -gt 0 ]
-        then
-            ssh $1 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
-        fi
     fi
 }
 
@@ -171,13 +141,3 @@ function x() {
     done
 }
 
-# send a libnotify notification based on exit status when a command finishes
-function notify () {
-    ($@)
-    if [ $? = 0 ]
-    then
-        notify-send -i face-smile-big "$@ finished successfully!"
-    else
-        notify-send -i face-angry -u critical "$@ failed!"
-    fi
-}
