@@ -14,3 +14,9 @@ export PYMACS_EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 alias ls='ls -G' # add colors (bsd ls)
+
+# Functions
+# open man page in Preview
+function pman () {
+    man -t "$@" | open -g -f -a /Applications/Preview.app
+}
