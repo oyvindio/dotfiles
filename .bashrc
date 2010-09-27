@@ -54,9 +54,10 @@ esac
 
 # Exports
 # use virtualenvwrapper
-if [[ -d $HOME/.virtualenvs ]]; then
+if [[ -d $HOME/.virtualenvs && -x $(which virtualenvwrapper.sh) ]]
+then
     export WORKON_HOME="$HOME/.virtualenvs"
-    . /usr/local/bin/virtualenvwrapper.sh
+    . $(which virtualenvwrapper.sh)
 fi
 
 export PAGER=less
