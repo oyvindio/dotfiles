@@ -36,6 +36,12 @@ then
     eval "`dircolors -b`"
 fi
 
+# enable completion for pip
+if [[ -x $(which pip) ]]
+then
+    eval "`pip completion --bash`"
+fi
+
 # Change the window title of X terminals
 case $TERM in
     aterm|eterm|*xterm*|konsole|kterm|rxvt*|wterm)
