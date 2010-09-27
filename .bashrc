@@ -31,7 +31,7 @@ case $(uname -s) in
 esac
 
 # Set dircolors
-if [ -x /usr/bin/dircolors ]
+if [[ -x /usr/bin/dircolors ]]
 then
     eval "`dircolors -b`"
 fi
