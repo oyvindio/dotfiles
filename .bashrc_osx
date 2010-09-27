@@ -5,8 +5,9 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash;
 fi
 
-export PATH=$PATH:/usr/local/Cellar/python/2.7/bin
+export PATH=/usr/local/Cellar/python/2.7/bin:$PATH
 export PYMACS_PYTHON=/usr/local/bin/python2.7
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export PYMACS_EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 # Aliases
