@@ -62,7 +62,7 @@ fi
 
 export PAGER=less
 export MANPAGER=less
-export EDITOR="emacsclient -nw"
+export EDITOR="emacs -nw"
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
 export HISTSIZE=10000
@@ -89,8 +89,8 @@ alias lr='ls -lRh' # recursive ls
 alias cp='cp -iv' # verbose + idiot proofing...
 alias mv='mv -iv' # verbose + idiot proofing...
 alias rm='rm -iv' # verbose + idiot proofing...
-alias e="emacsclient -nw" # open emacs on the commandline
-alias ex="emacsclient -c -n" # open an emacs window
+alias e="emacs -nw" # open emacs on the commandline
+alias ex="emacs" # open an emacs window
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
