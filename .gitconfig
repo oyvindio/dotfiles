@@ -14,7 +14,8 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	who = shortlog -s --
 	unstage = reset HEAD
-
+	ap = add --patch
+	dfst = diff --stat -r
 [pack]
 	threads = 0
 [core]
