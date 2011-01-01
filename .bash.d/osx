@@ -19,7 +19,7 @@ export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7/bin:$PATH:/usr/local/sbi
 export PYMACS_PYTHON=/usr/local/bin/python2.7
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export PYMACS_EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
-export JAVA_HOME=/Library/Java/Home
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Aliases
 # use Emacs.app, not the ancient built-in emacs
