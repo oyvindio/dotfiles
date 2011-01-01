@@ -1,8 +1,18 @@
 #!/bin/bash
 
-# bash completion
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  . /usr/local/etc/bash_completion.d/git-completion.bash;
+if [[ -x $(which brew) ]]
+then
+    # bash completion
+    if [[ -f `brew --prefix`/etc/bash_completion ]]
+    then
+        . `brew --prefix`/etc/bash_completion
+    fi
+
+    # completion for the brew command
+    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]
+    then
+        . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    fi
 fi
 
 export PATH=/usr/local/Cellar/python/2.7/bin:$PATH:/usr/local/sbin

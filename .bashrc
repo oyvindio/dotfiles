@@ -23,10 +23,10 @@ PS1='\u@\[\033[1;34m\]\h\[\033[1;36m\] \w\[\033[01;32m\]$(__git_ps1 " (%s)")\[\0
 
 case $(uname -s) in
     Linux)
-        . ~/.bashrc_linux
+        . ~/.bash.d/linux
         ;;
     Darwin)
-        . ~/.bashrc_osx
+        . ~/.bash.d/osx
         ;;
 esac
 
