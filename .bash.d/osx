@@ -21,9 +21,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Aliases
-# use Emacs.app, not the ancient built-in emacs
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ls='ls -G' # add colors (bsd ls)
 
 # Functions
