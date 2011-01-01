@@ -99,23 +99,6 @@ function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
 function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
 function mktar() { tar czf "${1%%/}.tar.gz" "${1%%/}/"; }
 function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
-function myip() { wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1; }
-
-function instaweb() {
-    if [ $# -gt 0 ]
-    then
-        if [ -d "$1" ]
-        then
-            cd "$1"
-            python -m SimpleHTTPServer
-            cd -
-        else
-            python -m SimpleHTTPServer "$1"
-        fi
-    else
-        python -m SimpleHTTPServer
-    fi
-}
 
 # extract files based on file extension
 function x() {
