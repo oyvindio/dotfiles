@@ -1,0 +1,29 @@
+# OS X
+.DS_Store?
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db 
+Desktop.ini
+
+# emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# vim
+*.sw[a-p]
+
+# cvs
+/CVS/*
+*/CVS/*
+.cvsignore
+*/.cvsignore
+
+# svn
+/.svn/*
+*/.svn/*
