@@ -91,6 +91,16 @@ alias mv='mv -iv' # verbose + idiot proofing...
 alias rm='rm -iv' # verbose + idiot proofing...
 alias e="emacs -nw" # open emacs on the commandline
 alias ex="emacs" # open an emacs window
+alias v="workon"
+alias v.deactivate='deactivate'
+alias v.mk='mkvirtualenv --no-site-packages'
+alias v.mk_withsitepackages='mkvirtualenv'
+alias v.rm='rmvirtualenv'
+alias v.switch='workon'
+alias v.add2virtualenv='add2virtualenv'
+alias v.cdsitepackages='cdsitepackages'
+alias v.cd='cdvirtualenv'
+alias v.lssitepackages='lssitepackages'
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
