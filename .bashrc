@@ -131,3 +131,7 @@ function x() {
     done
 }
 
+if [[ -f $HOME/.bashrc_local ]]
+then
+    . ~/.bashrc_local
+fi
