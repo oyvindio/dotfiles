@@ -73,13 +73,13 @@ export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted git changes in prompt
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
 
 # colorize manpages in less
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
+export LESS_TERMCAP_md=$'\E[0;34m' # begin bold
+export LESS_TERMCAP_me=$'\E[0m' # end bold
+export LESS_TERMCAP_so=$'\E[01;40;33m' # begin standout mode
+export LESS_TERMCAP_se=$'\E[0m' # end standout mode
+export LESS_TERMCAP_us=$'\E[0;36m' #begin underline
+export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 # Useful aliases
 alias ..="cd .." # lazy
