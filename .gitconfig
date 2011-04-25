@@ -11,7 +11,7 @@
 	br = branch
 	co = checkout
 	df = diff
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%C(blue)%h%C(reset) -%C(magenta)%d%C(reset) %s %C(cyan)(%cr)%C(reset)' --abbrev-commit --date=relative
 	who = shortlog -s --
 	unstage = reset HEAD
 	ap = add --patch
