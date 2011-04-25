@@ -25,6 +25,8 @@
     autosetupmerge = always
 [push]
     default = tracking
+[url "https://github.com/"]
+     insteadOf = "gh:"
 [mergetool.ediff]
     cmd = emacs --eval \" \
 (progn \
