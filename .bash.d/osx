@@ -16,6 +16,7 @@ then
 fi
 
 export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7.1/bin:$PATH:/usr/local/sbin
+launchctl setenv PATH $PATH
 export PYMACS_PYTHON=/usr/local/bin/python2.7
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export JAVA_HOME=$(/usr/libexec/java_home)
