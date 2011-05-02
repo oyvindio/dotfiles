@@ -11,9 +11,10 @@ IGNORE_LIST = [
     '.git',]
 
 if __name__ == '__main__':
-    dotfiles = [f for f in os.listdir(os.path.dirname(__file__)) if f not in IGNORE_LIST]
+    dotfiles_fpath = os.path.dirname(os.path.abspath(__file__))
+    dotfiles = [f for f in os.listdir(dotfiles_fpath) if f not in IGNORE_LIST]
     for dotfile in dotfiles:
-        src = os.path.abspath(dotfile)
+        src = os.path.join(dotfiles_fpath, dotfile)
         dest = os.path.join(os.path.expanduser('~'), os.path.basename(dotfile))
         if dotfile == '.Xdefaults': # .Xdefaults should be linked as .Xdefaults-hostname
             dest += '-{}'.format(platform.node())
