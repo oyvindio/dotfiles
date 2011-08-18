@@ -15,6 +15,11 @@ then
     fi
 fi
 
+if [[ -e /usr/local/lib/node ]]
+then
+    export NODE_PATH=/usr/local/lib/node
+fi
+
 export PATH=/usr/local/bin:/usr/local/Cellar/python/2.7.1/bin:$PATH:/usr/local/sbin
 launchctl setenv PATH $PATH
 export PYMACS_PYTHON=/usr/local/bin/python2.7
