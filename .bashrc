@@ -141,6 +141,27 @@ function x() {
     done
 }
 
+function git-pull-rebase() {
+    if [ $TERM != "dumb" ]; then
+        COLOR_START="\033[1;36m"
+        COLOR_END="\033[0m"
+    else
+        COLOR_START=""
+        COLOR_END=""
+    fi
+
+    if [ -z "`git status --porcelain`" ]; then
+        echo -e $(git pull --rebase)
+    else
+        echo -e "$COLOR_START# working tree dirty - stashing changes$COLOR_END"
+        echo -e "$(git stash)"
+        echo -e "$COLOR_START# pull and rebase$COLOR_END"
+        echo -e "$(git pull --rebase)"
+        echo -e "$COLOR_START# applying stash$COLOR_END"
+        echo -e "$(git stash apply)"
+    fi
+}
+
 if [[ -f $HOME/.bashrc_local ]]
 then
     . ~/.bashrc_local
