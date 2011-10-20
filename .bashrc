@@ -162,6 +162,27 @@ function git-pull-rebase() {
     fi
 }
 
+# cd up to a named dir in the current working directory
+function upto() {
+    local p="$PWD";
+    while [[ $p ]];
+    do
+        if [[ ${p##*/} = "$1" ]];
+        then
+            cd "$p"; return;
+        fi;
+        p=${p%/*};
+    done;
+    return 1;
+}
+
+function __upto() {
+    local cur
+    _get_comp_words_by_ref cur
+    COMPREPLY=( $( compgen -W "${PWD//\// }" -- "$cur" ) )
+}
+complete -o default -F __upto upto
+
 if [[ -f $HOME/.bashrc_local ]]
 then
     . ~/.bashrc_local
