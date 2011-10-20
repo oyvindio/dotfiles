@@ -84,6 +84,7 @@ export LESS_TERMCAP_ue=$'\E[0m' # end underline
 # Useful aliases
 alias ..="cd .." # lazy
 alias ll='ls -lh' # long listing
+alias l=ll
 alias la='ls -lah' # include hidden files
 alias lr='ls -lRh' # recursive ls
 alias cp='cp -iv' # verbose + idiot proofing...
