@@ -71,6 +71,7 @@ export HISTCONTROL=ignoredups
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
 export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted git changes in prompt
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
+export PROMPT_COMMAND="history -a && $PROMPT_COMMAND" # append to histfile on prompt
 
 # colorize manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
