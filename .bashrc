@@ -160,7 +160,7 @@ function git-pull-rebase() {
         COLOR_END=""
     fi
 
-    if [ -z "`git status --porcelain`" ]; then
+    if [ -z "`git status --porcelain --untracked=no`" ]; then
         echo -e $(git pull --rebase)
     else
         echo -e "$COLOR_START# working tree dirty - stashing changes$COLOR_END"
