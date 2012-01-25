@@ -18,18 +18,6 @@ shopt -s histreedit # allow re-editing failed history substitutions
 shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
 shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
 
-function __exit_code_ps1() {
-    if [[ $? -eq 0 ]]
-    then 
-        echo -ne "\033[0;32m$?\033[0m"; 
-    else
-        echo -ne "\033[0;31m$?\033[0m";
-    fi;
-}
-
-# Colorized prompt with git branch indication
-PS1='$(__exit_code_ps1) \u@\[\033[0;35m\]\h\[\033[0;34m\] \w\[\033[00;32m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
-
 case $(uname -s) in
     Linux)
         . ~/.bash.d/linux
