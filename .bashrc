@@ -27,6 +27,18 @@ case $(uname -s) in
         ;;
 esac
 
+PS1='\[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\]'
+
+# Add git status to prompt if __git_ps1 is available
+if type -t __git_ps1 &> /dev/null
+then
+    PS1="$PS1"' \[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[0m\]'
+    export GIT_PS1_SHOWDIRTYSTATE=1
+fi
+
+export PS1="$PS1 $ "
+
+
 # Set dircolors
 if [[ -x /usr/bin/dircolors ]]
 then
@@ -42,11 +54,11 @@ fi
 # Change the window title of X terminals
 case $TERM in
     aterm|eterm|*xterm*|konsole|kterm|rxvt*|wterm)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/$HOME/~}\007"'
-    ;;
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/$HOME/~}\007"'
+        ;;
     screen*)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}    \033\\"'
-    ;;
+        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}    \033\\"'
+        ;;
 esac
 
 # Exports
@@ -66,9 +78,8 @@ export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
-export GIT_PS1_SHOWDIRTYSTATE=1 # indicate uncommitted git changes in prompt
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
-export PROMPT_COMMAND="history -a && $PROMPT_COMMAND" # append to histfile on prompt
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # append to histfile on prompt
 
 # colorize manpages in less
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
