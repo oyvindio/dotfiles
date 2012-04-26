@@ -194,6 +194,9 @@ function __upto() {
 }
 complete -o default -F __upto upto
 
+# mvn bash completion from https://github.com/juven/maven-bash-completion
+. ~/.bash.d/mvn_bash_completion.bash
+
 if [[ -f $HOME/.bashrc_local ]]
 then
     . ~/.bashrc_local
