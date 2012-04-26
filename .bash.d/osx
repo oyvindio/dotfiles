@@ -35,6 +35,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 # Aliases
 alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ls='ls -G' # add colors (bsd ls)
+alias ql='qlmanage -p 2> /dev/null &' # quicklook
 
 # Functions
 # open man page in Preview
