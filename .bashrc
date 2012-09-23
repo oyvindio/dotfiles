@@ -45,6 +45,12 @@ then
     eval "`dircolors -b`"
 fi
 
+if [[ -x $(which src-hilite-lesspipe.sh) ]]
+then
+    export LESSOPEN="| $(which src-hilite-lesspipe.sh) %s"
+    export LESS=' -R '
+fi
+
 # enable completion for pip
 if [[ -x $(which pip) ]]
 then
