@@ -22,8 +22,6 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
-[branch]
-    autosetupmerge = always
 [push]
 	default = upstream
 [url "https://github.com/"]
