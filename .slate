@@ -1,27 +1,27 @@
-config defaultToCurrentScreen tru
+config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
 # Push Bindings
-bind l:ctrl;shift;cmd   push right bar-resize:screenSizeX/2
-bind h:ctrl;shift;cmd   push left  bar-resize:screenSizeX/2
-bind k:ctrl;shift;cmd   push up    bar-resize:screenSizeY/2
-bind j:ctrl;shift;cmd   push down  bar-resize:screenSizeY/2
+bind l:ctrl,shift,cmd   chain push right bar-resize:screenSizeX/2 | resize +0 -50% top-right | push down
+bind h:ctrl,shift,cmd   chain push left  bar-resize:screenSizeX/2 | resize +0 -50% top-left | push down
+bind k:ctrl,shift,cmd   chain push up bar-resize:screenSizeY/2 | resize -50% +0 top-right | push left
+bind j:ctrl,shift,cmd   chain push down bar-resize:screenSizeY/2 | resize -50% +0 bottom-left | push right
 
-bind m:ctrl;shift;cmd   corner top-left resize:screenSizeX;screenSizeY
-bind c:ctrl;shift;cmd   corner top-left resize:screenSizeX*.65;screenSizeY
-
-bind y:ctrl;shift;cmd   move windowTopLeftX;0 windowSizeX;screenSizeY
-bind x:ctrl;shift;cmd   move windowTopLeftX;windowTopLeftY screenSizeX;windowSizeY
+# Resize bindings
+bind y:n,ctrl,shift,cmd   move windowTopLeftX;0 windowSizeX;screenSizeY
+bind x:n,ctrl,shift,cmd   move windowTopLeftX;windowTopLeftY screenSizeX;windowSizeY
+bind m:n,ctrl,shift,cmd corner top-left resize:screenSizeX;screenSizeY
+bind c:n,ctrl,shift,cmd corner top-left resize:screenSizeX*.65;screenSizeY
 
 # Throw Bindings
-bind right:ctrl;shift;cmd;alt throw right resize
-bind left:ctrl;shift;cmd;alt  throw left  resize
-bind up:ctrl;shift;cmd;alt    throw up    resize
-bind down:ctrl;shift;cmd;alt  throw down  resize
+bind l:d,ctrl,shift,cmd throw right resize
+bind h:d,ctrl,shift,cmd throw left  resize
+bind k:d,ctrl,shift,cmd throw up    resize
+bind j:d,ctrl,shift,cmd throw down  resize
 
 # Focus Bindings
-bind f:ctrl;shift;cmd focus behind
+bind f:ctrl;shift;cmd chain focus right | focus left | focus up | focus down
 
 # Window Hints
-bind backslash:ctrl;shift;cmd;alt hint ASDFGHJKL
+bind backslash:ctrl;shift;cmd hint ASDFGHJKL
