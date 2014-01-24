@@ -83,6 +83,7 @@ export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
 export HISTSIZE=500000
 export HISTFILESIZE=500000
 export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S '
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
 export PROMPT_COMMAND="history -a && $PROMPT_COMMAND" # append to histfile on prompt
