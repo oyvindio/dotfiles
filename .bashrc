@@ -75,6 +75,11 @@ then
     . $(which virtualenvwrapper.sh)
 fi
 
+if [[ -d "$HOME/bin" ]]
+then
+    export PATH="$PATH:$HOME/bin"
+fi
+
 export PAGER=less
 export MANPAGER=less
 export EDITOR="emacs -nw"
