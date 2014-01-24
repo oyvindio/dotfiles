@@ -124,6 +124,8 @@ alias v.add2virtualenv='add2virtualenv'
 alias v.cdsitepackages='cdsitepackages'
 alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
+alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
+alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
