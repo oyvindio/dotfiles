@@ -31,3 +31,4 @@ set page-completions off
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
+set colored-stats on
