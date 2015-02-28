@@ -1,8 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# tty flow control (^s and ^q) is more trouble than it's worth; disable it
-stty -ixon -ixoff
+# tty flow control (^s and ^q) is more trouble than it's worth; disable it if we are a tty
+if [ -t 1 ]
+then
+    stty -ixon -ixoff
+fi
 
 # Useful bash options
 shopt -s cdable_vars # if cd arg is not valid, assumes its a var defining a dir
