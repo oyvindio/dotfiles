@@ -9,9 +9,10 @@
 [alias]
 	ci = commit
 	st = status -sb
-	br = branch
+	br = branch -vv
 	co = checkout
 	df = diff
+	dc = diff --cached
 	lg = log --pretty=format:'%C(blue)%h%C(reset) -%C(magenta)%d%C(reset) %s %C(cyan)(%cr)%C(reset)' --abbrev-commit --date=relative
 	who = shortlog -s --
 	unstage = reset HEAD
@@ -20,6 +21,7 @@
 	pr = !bash -ic 'git-pull-rebase \"$@\"' -
         conflicted = diff --name-only --diff-filter=U
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+        staged = diff --cached
 [pack]
 	threads = 0
 [core]
