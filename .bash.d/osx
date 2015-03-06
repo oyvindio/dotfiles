@@ -51,3 +51,7 @@ alias ql='qlmanage -p 2> /dev/null &' # quicklook
 function pman () {
     man -t "$@" | open -g -f -a /Applications/Preview.app
 }
+
+if [[ -r "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh" ]]; then
+    . "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh"
+fi
