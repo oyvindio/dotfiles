@@ -2,8 +2,7 @@
 [ -z "$PS1" ] && return
 
 # tty flow control (^s and ^q) is more trouble than it's worth; disable it if we are a tty
-if [ -t 1 ]
-then
+if [ -t 1 ]; then
     stty -ixon -ixoff
 fi
 
