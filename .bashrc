@@ -49,8 +49,7 @@ then
     eval "`dircolors -b`"
 fi
 
-if [[ -x $(which src-hilite-lesspipe.sh) ]]
-then
+if hash src-hilite-lesspipe.sh 2> /dev/null; then
     export LESSOPEN="| $(which src-hilite-lesspipe.sh) %s"
     export LESS=' -R '
 fi
