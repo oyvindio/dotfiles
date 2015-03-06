@@ -31,4 +31,10 @@ set page-completions off
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
+# Use color from LS_COLORS when completing files/dirs
 set colored-stats on
+
+# set-mark,  kill-region, kill-ring-save/copy-region-as-kill like emacs
+"\C-SPACE": set-mark
+"\C-x\C-k": kill-region
+"\e-w": copy-region-as-kill
