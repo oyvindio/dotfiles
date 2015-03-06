@@ -98,7 +98,7 @@ export HISTCONTROL=ignoredups
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S '
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
 export PROMPT_DIRTRIM=3 # truncate long paths in PS1 prompt
-export PROMPT_COMMAND="history -a && $PROMPT_COMMAND" # append to histfile on prompt
+export PROMPT_COMMAND="history -a && history -c && history -r && $PROMPT_COMMAND" # append to and reread histfile on prompt
 export GREP_OPTIONS="--color=auto"
 
 # colorize manpages in less
