@@ -89,8 +89,13 @@ export MANPAGER=less
 export EDITOR="emacs -nw"
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
-export HISTSIZE=500000
-export HISTFILESIZE=500000
+if [[ ${BASH_VERSINFO[0]} -eq 4 ]] && [[ ${BASH_VERSINFO[1]} -ge 3 ]] || [[ ${BASH_VERSINFO[0]} -gt 4 ]]; then
+    export HISTSIZE=-1 #
+    export HISTFILESIZE=-1
+else
+    export HISTSIZE=500000
+    export HISTFILESIZE=500000
+fi
 export HISTCONTROL=ignoredups
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S '
 export IGNOREEOF=1 # ignore 1 EOF (^D) before killing the shell
