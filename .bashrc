@@ -20,6 +20,7 @@ shopt -s histverify # readline goodness for history substitutions
 shopt -s histreedit # allow re-editing failed history substitutions
 shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
 shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
+[[ ${BASH_VERSINFO[0]} -ge 4 ]] && shopt -s globstar # allow recursive globbing with ** (bash 4.0 and later only)
 
 case $(uname -s) in
     Linux)
