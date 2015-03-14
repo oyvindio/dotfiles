@@ -38,3 +38,7 @@ set colored-stats on
 "\C-SPACE": set-mark
 "\C-x\C-k": kill-region
 "\e-w": copy-region-as-kill
+
+
+# bind backward-kill-word like emacs, tty C-w sucks.
+"\C-w": backward-kill-word

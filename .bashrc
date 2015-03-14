@@ -1,9 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# tty flow control (^s and ^q) is more trouble than it's worth; disable it if we are a tty
 if [ -t 1 ]; then
-    stty -ixon -ixoff
+    stty -ixon -ixoff # disable tty flow control (^s and ^q) 
+    stty werase undef # disable the ttys ^w which overrides readlines backward-kill-word
 fi
 
 # Useful bash options
