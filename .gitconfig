@@ -22,6 +22,7 @@
         conflicted = diff --name-only --diff-filter=U
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
         staged = diff --cached
+        ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
 [pack]
 	threads = 0
 [core]
