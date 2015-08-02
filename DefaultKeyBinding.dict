@@ -1,0 +1,19 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.dict */
+{
+ "~f" ="moveWordForward:";
+ "~b" ="moveWordBackward:";
+ "~<" ="moveToBeginningOfDocument:";
+ "~>" ="moveToEndOfDocument:";
+ "~v" ="pageUp:";
+ "~d" ="deleteWordForward:";
+ "~c" = "capitalizeWord:"; /* M-c */
+ "~u" = "uppercaseWord:"; /* M-u */
+ "~l" = "lowercaseWord:"; /* M-l */
+ "^t" = "transpose:"; /* C-t */
+ "~t" = "transposeWords:"; /* M-t */
+ "~^h" ="deleteWordBackward:";
+ "^w" ="deleteWordBackward:";
+ "~\010" ="deleteWordBackward:"; /* Alt-backspace */
+ "~\177" ="deleteWordBackward:"; /* Alt-delete */ 
+ "~/" ="complete:";
+}
