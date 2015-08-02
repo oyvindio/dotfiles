@@ -148,25 +148,25 @@ function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 function x() {
     for arg in $@
     do
-        if [ -f $arg ]
+        if [ -f "$arg" ]
         then
-            case $arg in
-                *.tar.bz2)  tar xjvf $arg     ;;
-                *.tar.gz)   tar xzvf $arg     ;;
-                *.tar.xz)   tar xJvf $arg     ;;
-                *.bz2)      bunzip2 -v $arg   ;;
-                *.rar)      unrar x $arg      ;;
-                *.gz)       gunzip -v $arg    ;;
-                *.tar)      tar xvf $arg      ;;
-                *.tbz2)     tar xjvf $arg     ;;
-                *.tgz)      tar xzvf $arg     ;;
-                *.txz)      tar xJvf $arg     ;;
-                *.zip)      unzip $arg        ;;
-                *.jar)      jar xvf $arg      ;;
-                *.Z)        uncompress $arg   ;;
-                *.xpi)      unzip $arg        ;;
-                *.7z)       7z x $arg         ;;
-                *.crx)       unzip $arg       ;;
+            case "$arg" in
+                *.tar.bz2)  tar xjvf "$arg"     ;;
+                *.tar.gz)   tar xzvf "$arg"     ;;
+                *.tar.xz)   tar xJvf "$arg"     ;;
+                *.bz2)      bunzip2 -v "$arg"   ;;
+                *.rar)      unrar x "$arg"      ;;
+                *.gz)       gunzip -v "$arg"    ;;
+                *.tar)      tar xvf "$arg"      ;;
+                *.tbz2)     tar xjvf "$arg"     ;;
+                *.tgz)      tar xzvf "$arg"     ;;
+                *.txz)      tar xJvf "$arg"     ;;
+                *.zip)      unzip "$arg"        ;;
+                *.jar)      jar xvf "$arg"      ;;
+                *.Z)        uncompress "$arg"   ;;
+                *.xpi)      unzip "$arg"        ;;
+                *.7z)       7z x "$arg"         ;;
+                *.crx)      unzip "$arg"        ;;
                 *)          echo "'$arg' cannot be extracted via x (extract)" ;;
             esac
         else
