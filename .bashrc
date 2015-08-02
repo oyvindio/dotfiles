@@ -119,6 +119,9 @@ export LESS_TERMCAP_se=$'\E[0m' # end standout mode
 export LESS_TERMCAP_us=$'\E[0;36m' #begin underline
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
+# Python rc file
+export PYTHONSTARTUP="$HOME/.pythonrc"
+
 # Useful aliases
 alias ..="cd .." # lazy
 alias ll='ls -lh' # long listing
