@@ -1,18 +1,10 @@
 #!/bin/bash
 
-if [[ -x $(which brew) ]]
+if [[ -x "$(which brew)" ]]
 then
-    # bash completion
-    if [[ -f `brew --prefix`/etc/bash_completion ]]
-    then
-        . `brew --prefix`/etc/bash_completion
-    fi
-
-    # completion for the brew command
-    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]
-    then
-        . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-    fi
+    source_if_exists "$(brew --prefix)/etc/bash_completion"
+    source_if_exists "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh"
+    source_if_exists "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh"
 fi
 
 if [[ -e /usr/local/lib/node ]]
@@ -27,10 +19,7 @@ then
     export PATH=$PATH:$HOME/.cabal/bin
 fi
 
-#launchctl setenv PATH $PATH
-#export PYMACS_PYTHON=/usr/local/bin/python2.7
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-#export JAVA_HOME=$(/usr/libexec/java_home)
 
 # export LS_COLORS (Gnu/Linux) for readline, and set LSCOLORS (BSD) to match it (as closely as possible)
 export LSCOLORS='exfxcxdxbxegedabagacad'
@@ -45,13 +34,3 @@ else
 fi
 alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ql='qlmanage -p 2> /dev/null &' # quicklook
-
-# Functions
-# open man page in Preview
-function pman () {
-    man -t "$@" | open -g -f -a /Applications/Preview.app
-}
-
-if [[ -r "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh" ]]; then
-    . "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh"
-fi

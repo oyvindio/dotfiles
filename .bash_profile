@@ -1,5 +1,5 @@
-#/bin/bash
-if [[ "$(uname)" =~ "Darwin" ]]
+#!/bin/bash
+if [[ "$(uname)" =~ Darwin ]]
 then
     # os x sets locale vars to non-standard values. this sometimes causes
     # encoding issues on remote machines
@@ -14,4 +14,4 @@ fi
 # load rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # enable bash completion for rvm
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+[[ -r $rvm_path/scripts/completion ]] && . "$rvm_path/scripts/completion"

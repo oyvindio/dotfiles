@@ -1,3 +1,4 @@
+#!/bin/bash
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -20,6 +21,14 @@ shopt -s histreedit # allow re-editing failed history substitutions
 shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
 shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
 [[ ${BASH_VERSINFO[0]} -ge 4 ]] && shopt -s globstar # allow recursive globbing with ** (bash 4.0 and later only)
+
+function source_if_exists() {
+    for file in "$@"; do
+        if [[ -f "$file" ]]; then
+            . "$file"
+        fi
+    done
+}
 
 case $(uname -s) in
     Linux)
@@ -45,7 +54,7 @@ export PS1="$PS1 $ "
 # Set dircolors
 if [[ -x /usr/bin/dircolors ]]
 then
-    eval "`dircolors -b`"
+    eval "$(dircolors -b)"
 fi
 
 if hash src-hilite-lesspipe.sh 2> /dev/null; then
@@ -56,7 +65,7 @@ fi
 # enable completion for pip
 if [[ -x $(which pip) ]]
 then
-    eval "`pip completion --bash`"
+    eval "$(pip completion --bash)"
 fi
 
 # Change the window title of X terminals
@@ -71,10 +80,10 @@ esac
 
 # Exports
 # use virtualenvwrapper
-if [[ -d $HOME/.virtualenvs && -x $(which virtualenvwrapper.sh) ]]
+if [[ -d $HOME/.virtualenvs && -x "$(which virtualenvwrapper.sh)" ]]
 then
     export WORKON_HOME="$HOME/.virtualenvs"
-    . $(which virtualenvwrapper.sh)
+    . "$(which virtualenvwrapper.sh)"
 fi
 
 if [[ -d "$HOME/bin" ]]
@@ -146,7 +155,7 @@ function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 
 # extract files based on file extension
 function x() {
-    for arg in $@
+    for arg in "$@"
     do
         if [ -f "$arg" ]
         then
@@ -176,7 +185,7 @@ function x() {
 }
 
 function git-pull-rebase() {
-    if [ $TERM != "dumb" ]; then
+    if [ "$TERM" != "dumb" ]; then
         COLOR_START="\033[1;36m"
         COLOR_END="\033[0m"
     else
@@ -184,8 +193,8 @@ function git-pull-rebase() {
         COLOR_END=""
     fi
 
-    if [ -z "`git status --porcelain --untracked=no`" ]; then
-        echo -e $(git pull --rebase)
+    if [ -z "$(git status --porcelain --untracked=no)" ]; then
+        echo -e "$(git pull --rebase)"
     else
         echo -e "$COLOR_START# working tree dirty - stashing changes$COLOR_END"
         echo -e "$(git stash)"
