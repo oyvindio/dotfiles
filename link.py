@@ -8,7 +8,10 @@ IGNORE_LIST = [
     os.path.basename(__file__),
     '.gitignore',
     'README.mkdn',
-    '.git',]
+    '.git',
+    'DefaultKeyBinding.dict',
+    'U.S. International - Modified.keylayout',
+    'setup-osx.sh',]
 
 if __name__ == '__main__':
     dotfiles_fpath = os.path.dirname(os.path.abspath(__file__))
