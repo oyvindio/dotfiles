@@ -11,7 +11,4 @@ fi
 # source .bashrc
 . ~/.bashrc
 
-# load rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-# enable bash completion for rvm
-[[ -r $rvm_path/scripts/completion ]] && . "$rvm_path/scripts/completion"
+if hash rbenv > /dev/null; then eval "$(rbenv init -)"; fi
