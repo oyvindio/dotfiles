@@ -30,6 +30,10 @@ function source_if_exists() {
     done
 }
 
+function command_is_defined() {
+    type -t "$1" &> /dev/null
+}
+
 case $(uname -s) in
     Linux)
         . ~/.bash.d/linux
@@ -42,7 +46,7 @@ esac
 PS1='\[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\]'
 
 # Add git status to prompt if __git_ps1 is available
-if type -t __git_ps1 &> /dev/null
+if command_is_defined __git_ps1
 then
     PS1="$PS1"' \[\033[1;35m\]$(__git_ps1 "(%s)")\[\033[0m\]'
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -63,7 +67,7 @@ if hash src-hilite-lesspipe.sh 2> /dev/null; then
 fi
 
 # enable completion for pip
-if [[ -x $(which pip) ]]
+if command_is_defined pip
 then
     eval "$(pip completion --bash)"
 fi
@@ -80,7 +84,7 @@ esac
 
 # Exports
 # use virtualenvwrapper
-if [[ -d $HOME/.virtualenvs && -x "$(which virtualenvwrapper.sh)" ]]
+if [[ -d $HOME/.virtualenvs ]] && command_is_defined virtualenvwrapper.sh
 then
     export WORKON_HOME="$HOME/.virtualenvs"
     . "$(which virtualenvwrapper.sh)"
