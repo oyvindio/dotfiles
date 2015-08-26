@@ -4,7 +4,10 @@ if command_is_defined brew
 then
     source_if_exists "$(brew --prefix)/etc/bash_completion"
     source_if_exists "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh"
-    source_if_exists "$(brew --prefix)/Library/Taps/bfontaine/homebrew-command-not-found/handler.sh"
+    if brew command command-not-found-init > /dev/null
+    then
+        eval "$(brew command-not-found-init)";
+    fi
 fi
 
 if [[ -e /usr/local/lib/node ]]
