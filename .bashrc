@@ -69,7 +69,7 @@ fi
 # enable completion for pip
 if command_is_defined pip
 then
-    eval "$(pip completion --bash)"
+    eval "$(pip completion --bash 2>/dev/null)"
 fi
 
 # Change the window title of X terminals
