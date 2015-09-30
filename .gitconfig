@@ -18,7 +18,7 @@
 	unstage = reset HEAD
 	ap = add --patch
 	dfst = diff --stat -r
-	pr = !bash -ic 'git-pull-rebase \"$@\"' -
+	pr = pull --rebase
         conflicted = diff --name-only --diff-filter=U
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(committerdate:iso8601) %(color:magenta)%(refname:short)%(color:reset)'
         staged = diff --cached
@@ -32,3 +32,5 @@
 	default = upstream
 [url "https://github.com/"]
      insteadOf = "gh:"
+[rebase]
+        autostash = true
