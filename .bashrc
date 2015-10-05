@@ -150,7 +150,7 @@ alias v.lssitepackages='lssitepackages'
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
 alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi"
-alias docker-rm-stopped-containers='docker ps -qa | xargs docker rm'
+alias docker-rm-stopped='docker ps -f status=exited -q | xargs docker rm'
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
