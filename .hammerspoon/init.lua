@@ -22,7 +22,7 @@ hs.hotkey.bind(window_chord, "M", function()
   f.y = screen_f.y
   f.h = screen_f.h
   f.w = screen_f.w
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Left half
@@ -35,7 +35,7 @@ hs.hotkey.bind(window_chord, "H", function()
   f.y = max.y
   f.h = max.h
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Right half
@@ -50,7 +50,7 @@ hs.hotkey.bind(window_chord, "L", function()
   f.y = max.y
   f.h = max.h
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Top half
@@ -76,7 +76,7 @@ hs.hotkey.bind(window_chord, "J", function()
   f.y = max.y + (max.h / 2)
   f.h = max.h / 2
   f.w = max.w
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Top left half
@@ -89,7 +89,7 @@ hs.hotkey.bind(window_chord, "Y", function()
   f.y = max.y
   f.h = max.h / 2
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Top Right half
@@ -102,7 +102,7 @@ hs.hotkey.bind(window_chord, "U", function()
   f.y = max.y
   f.h = max.h / 2
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Bottom left half
@@ -115,7 +115,7 @@ hs.hotkey.bind(window_chord, "B", function()
   f.y = max.y + (max.h / 2)
   f.h = max.h / 2
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 -- Bottom right half
@@ -128,7 +128,7 @@ hs.hotkey.bind(window_chord, "N", function()
   f.y = max.y + (max.h / 2)
   f.h = max.h / 2
   f.w = max.w / 2
-  win:setFrame(f)
+  win:setFrame(f, 0)
 end)
 
 
