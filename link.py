@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import os
 import os.path
 import platform
@@ -25,6 +26,6 @@ if __name__ == '__main__':
             if os.path.islink(dest):
                 os.remove(dest)
             else:
-                print >> sys.stderr, '{} already exists, you should remove it first!'.format(dest)
-        print 'symlinking {} to {}'.format(src, dest)
+                print('{} already exists, you should remove it first!'.format(dest), file=sys.stderr)
+        print('symlinking {} to {}'.format(src, dest))
         os.symlink(src, dest)
