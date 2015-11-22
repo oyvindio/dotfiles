@@ -134,22 +134,11 @@ end)
 
 -- Move window between screens
 chain_bind(window_chord, 'D', function(modal)
-  function bind_send_to_screen(key, screen)
-    modal:bind('', key, nil, function()
-      if screen
-      then
-        local win = hs.window.focusedWindow()
-        win:moveToScreen(screen)
-      end
-      modal:exit()
-    end)
-  end
-
-  local screen = hs.window.focusedWindow():screen()
-  bind_send_to_screen('H', screen:toWest())
-  bind_send_to_screen('J', screen:toSouth())
-  bind_send_to_screen('K', screen:toNorth())
-  bind_send_to_screen('L', screen:toEast())
+  modal:bind('', 'N', nil, function()
+    local win = hs.window.focusedWindow()
+    local target = win:screen():next()
+    win:moveToScreen(target)
+  end)
 end)
 
 
