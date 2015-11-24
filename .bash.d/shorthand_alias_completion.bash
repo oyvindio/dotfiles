@@ -6,10 +6,7 @@
 extglob_status=$(shopt -p extglob)
 shopt -s extglob
 
-mapfile -t completions < <(complete -p)
-mapfile -t aliases < <(alias -p)
-
-for token in "${aliases[@]}"
+while read token
 do
     alias_stripped=${token#alias }
     alias_name=${alias_stripped%%=+([^[:cntrl:]=])}
@@ -18,19 +15,14 @@ do
 
     if [[ ${alias_value} =~ ^[^[:cntrl:][:space:]\;]+$ ]]
     then # $alias_name points to a single command $alias_value with no args
-        for completion in "${completions[@]}"
-        do
-            completion_tokens=($completion)
-            completion_target=${completion_tokens[-1]}
-            if [[ ${completion_target} == "${alias_value}" ]]
-            then # $alias_value has a completion function, use it for $alias_name also
-                complete_command=${completion_tokens[*]:0:${#completion_tokens[@]}-1}
-                # echo "eval \"$complete_command $alias_name\""
-                eval "$complete_command $alias_name"
-                break
-            fi
-        done
+        alias_value_complete=$(complete -p "$alias_value" 2> /dev/null)
+        if [[ $? == 0 ]]
+        then
+            complete_command=${alias_value_complete% +([^[:cntrl:]])}
+            # echo "eval \"$complete_command $alias_name\""
+            eval "$complete_command $alias_name"
+        fi
     fi
-done
+done < <(alias -p)
 
 eval "$extglob_status" # set extglob option back to previous state
