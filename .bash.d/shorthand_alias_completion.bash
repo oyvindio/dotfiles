@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Enables the same bash completion for simple single-command shorthand aliases like `alias g=git` if the command being aliased has a completion function defined.
+# Enables the same bash completion for simple single-command shorthand aliases like `alias g=git`
+# if the command being aliased has a completion function defined.
 # Usage: source into your shell after aliases are defined and after bash_completion is sourced.
 
 extglob_status=$(shopt -p extglob)
@@ -26,6 +27,7 @@ do
                 complete_command=${completion_tokens[*]:0:${#completion_tokens[@]}-1}
                 # echo "eval \"$complete_command $alias_name\""
                 eval "$complete_command $alias_name"
+                break
             fi
         done
     fi
