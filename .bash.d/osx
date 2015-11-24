@@ -1,16 +1,18 @@
 #!/bin/bash
 
-if command_is_defined brew
-then
-    __BREW_PREFIX=$(brew --prefix)
-    source_if_exists "${__BREW_PREFIX}/etc/bash_completion"
-    source_if_exists "${__BREW_PREFIX}/Library/Contributions/brew_bash_completion.sh"
-    unset __BREW_PREFIX
-    if brew command command-not-found-init > /dev/null
+function enable_bash_completion() {
+    if command_is_defined brew
     then
-        eval "$(brew command-not-found-init)";
+        __BREW_PREFIX=$(brew --prefix)
+        source_if_exists "${__BREW_PREFIX}/etc/bash_completion"
+        source_if_exists "${__BREW_PREFIX}/Library/Contributions/brew_bash_completion.sh"
+        unset __BREW_PREFIX
+        if brew command command-not-found-init > /dev/null
+        then
+            eval "$(brew command-not-found-init)";
+        fi
     fi
-fi
+}
 
 if [[ -e /usr/local/lib/node ]]
 then

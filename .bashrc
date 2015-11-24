@@ -215,9 +215,7 @@ function __upto() {
 }
 complete -o default -F __upto upto
 
-# mvn bash completion from https://github.com/juven/maven-bash-completion
-. ~/.bash.d/mvn_bash_completion.bash
-
 source_if_exists ~/.bashrc_local
 
-. ~/.bash.d/shorthand_alias_completion.bash
+enable_bash_completion
+unset enable_bash_completion

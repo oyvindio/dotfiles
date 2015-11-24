@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # bash completion
-source_if_exists /etc/bash_completion
+function enable_bash_completion() {
+    source_if_exists /etc/bash_completion
+}
 
 # Exports
 export PATH=$PATH:/usr/local/bin # system local stuff
