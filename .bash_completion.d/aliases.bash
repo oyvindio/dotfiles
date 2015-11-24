@@ -12,7 +12,7 @@ function alias_completion {
     (( ${#completions[@]} == 0 )) && return 0
 
     # create temporary file for wrapper functions and completions
-    rm -f "/tmp/${namespace}-*.tmp" # preliminary cleanup
+    \rm -f "/tmp/${namespace}-*.tmp" # preliminary cleanup
     local tmp_file="$(mktemp "/tmp/${namespace}-${RANDOM}.tmp")" || return 1
 
     # read in "<alias> '<aliased command>' '<command args>'" lines from defined aliases
@@ -47,5 +47,5 @@ function alias_completion {
         new_completion="${new_completion% *} $alias_name"
         echo "$new_completion" >> "$tmp_file"
     done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
-    source "$tmp_file" && rm -f "$tmp_file"
+    source "$tmp_file" && \rm -f "$tmp_file"
 }; alias_completion
