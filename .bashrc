@@ -152,6 +152,8 @@ alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 
 alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
 alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi"
 alias docker-rm-stopped='docker ps -f status=exited -q | xargs docker rm'
+alias g=git
+alias dm=docker-machine
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
@@ -217,3 +219,5 @@ complete -o default -F __upto upto
 . ~/.bash.d/mvn_bash_completion.bash
 
 source_if_exists ~/.bashrc_local
+
+. ~/.bash.d/shorthand_alias_completion.bash
