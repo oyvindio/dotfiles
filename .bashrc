@@ -154,6 +154,7 @@ alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' 
 alias docker-rm-stopped='docker ps -f status=exited -q | xargs docker rm'
 alias g=git
 alias dm=docker-machine
+alias diga='dig +nocmd -tANY +multiline +noall +answer'
 
 # Useful functions
 function mkcd() { mkdir "$1" && cd "$1"; }
