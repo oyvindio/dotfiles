@@ -141,9 +141,11 @@ alias v.lssitepackages='lssitepackages'
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
 alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi"
+alias docker-rmi-dangling='docker images --filter dangling=true --quiet | xargs docker rmi'
 alias docker-rm-stopped='docker ps -f status=exited -q | xargs docker rm'
 alias g=git
 alias dm=docker-machine
+alias dcp=docker-compose
 alias diga='dig +nocmd -tANY +multiline +noall +answer'
 
 # Useful functions
