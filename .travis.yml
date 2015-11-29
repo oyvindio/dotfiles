@@ -1,6 +1,9 @@
 addons:
   apt:
     packages:
-      - shellcheck
+      - cabal-install
+before_script:
+  - cabal update
+  - cabal install shellcheck
 script:
-  - bash lint.sh
+  - PATH=${PATH}:$HOME/.cabal/bin bash lint.sh
