@@ -5,7 +5,7 @@ addons:
       - ghc
       - cabal-install
 before_script:
-  - "[[ ! -e $HOME/.cabal/bin/shellcheck ]] && cabal update && cabal install shellcheck"
+  - "([[ ! -e $HOME/.cabal/bin/shellcheck ]] && cabal update && cabal install shellcheck) || true"
 cache:
   directories:
     - $HOME/.cabal
