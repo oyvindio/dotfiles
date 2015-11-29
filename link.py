@@ -14,6 +14,7 @@ IGNORE_LIST = [
     'U.S. International - Modified.keylayout',
     'setup-osx.sh',
     'lint.sh',
+    '.travis.yml',
 ]
 
 if __name__ == '__main__':
