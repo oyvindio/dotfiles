@@ -8,6 +8,7 @@ before_script:
   - cabal update
   - "[[ ! -e $HOME/cabal/bin/shellcheck ]] && cabal install shellcheck"
 cache:
-  - $HOME/.cabal
+  directories:
+    - $HOME/.cabal
 script:
   - PATH=${PATH}:$HOME/.cabal/bin bash lint.sh
