@@ -6,7 +6,7 @@ addons:
       - cabal-install
 before_script:
   - cabal update
-  - [[ ! -e $HOME/cabal.bin ]] && cabal install shellcheck
+  - "[[ ! -e $HOME/cabal.bin ]] && cabal install shellcheck"
 cache:
   - $HOME/.cabal
 script:
