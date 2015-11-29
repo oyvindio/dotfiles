@@ -12,7 +12,9 @@ IGNORE_LIST = [
     '.git',
     'DefaultKeyBinding.dict',
     'U.S. International - Modified.keylayout',
-    'setup-osx.sh',]
+    'setup-osx.sh',
+    'lint.sh',
+]
 
 if __name__ == '__main__':
     dotfiles_fpath = os.path.dirname(os.path.abspath(__file__))
