@@ -36,9 +36,11 @@ function command_is_defined() {
 
 case $(uname -s) in
     Linux)
+        # shellcheck source=.bash.d/linux
         . ~/.bash.d/linux
         ;;
     Darwin)
+        # shellcheck source=.bash.d/osx
         . ~/.bash.d/osx
         ;;
 esac

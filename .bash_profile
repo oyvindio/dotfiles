@@ -8,7 +8,7 @@ then
     export LC_CTYPE=en_GB.UTF-8
 fi
 
-# source .bashrc
+# shellcheck source=.bashrc
 . ~/.bashrc
 
 if hash rbenv > /dev/null; then eval "$(rbenv init -)"; fi
