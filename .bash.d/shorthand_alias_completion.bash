@@ -6,7 +6,7 @@
 extglob_status=$(shopt -p extglob)
 shopt -s extglob
 
-while read token
+while read -r token
 do
     alias_stripped=${token#alias }
     alias_name=${alias_stripped%%=+([^[:cntrl:]=])}
