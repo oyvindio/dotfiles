@@ -54,6 +54,6 @@ function alias_completion {
         new_completion="${new_completion% *} $alias_name"
         echo "$new_completion" >> "$tmp_file"
     done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
-    # shellcheck disable=SC1012
+    # shellcheck disable=SC1012,SC1090
     source "$tmp_file" && \rm -f "$tmp_file"
 }; alias_completion
