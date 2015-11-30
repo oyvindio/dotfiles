@@ -199,7 +199,8 @@ function upto() {
     do
         if [[ ${p##*/} = "$1" ]];
         then
-            cd "$p"; return;
+            cd "$p" || return 1
+            return;
         fi;
         p=${p%/*};
     done;
