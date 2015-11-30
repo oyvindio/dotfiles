@@ -51,10 +51,13 @@ then
     eval "$(dircolors -b)"
 fi
 
-if hash src-hilite-lesspipe.sh 2> /dev/null; then
-    export LESSOPEN="| $(which src-hilite-lesspipe.sh) %s"
-    export LESS=' -R '
+SRC_HILITE_LESSPIPE=$(which src-hilite-lesspipe.sh)
+if [[ ! -z ${SRC_HILITE_LESSPIPE} ]]
+then
+    export LESSOPEN="| ${SRC_HILITE_LESSPIPE} %s"
 fi
+unset SRC_HILITE_LESSPIPE
+export LESS=' -R '
 
 # enable completion for pip
 if command_is_defined pip
@@ -90,8 +93,8 @@ export MANPAGER=less
 export EDITOR="emacs -nw"
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
-if [[ ${BASH_VERSINFO[0]} -eq 4 ]] && [[ ${BASH_VERSINFO[1]} -ge 3 ]] || [[ ${BASH_VERSINFO[0]} -gt 4 ]]; then
-    export HISTSIZE=-1 #
+if ([[ ${BASH_VERSINFO[0]} -eq 4 ]] && [[ ${BASH_VERSINFO[1]} -ge 3 ]]) || [[ ${BASH_VERSINFO[0]} -gt 4 ]]; then
+    export HISTSIZE=-1
     export HISTFILESIZE=-1
 else
     export HISTSIZE=500000
