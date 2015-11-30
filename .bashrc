@@ -24,7 +24,9 @@ shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
 
 function source_if_exists() {
     for file in "$@"; do
-        if [[ -f "$file" ]]; then
+        if [[ -f "$file" ]]
+        then
+            # shellcheck disable=SC1090
             . "$file"
         fi
     done
