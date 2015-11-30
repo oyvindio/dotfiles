@@ -78,13 +78,6 @@ case $TERM in
 esac
 
 # Exports
-# use virtualenvwrapper
-if [[ -d $HOME/.virtualenvs ]] && command_is_defined virtualenvwrapper.sh
-then
-    export WORKON_HOME="$HOME/.virtualenvs"
-    . "$(which virtualenvwrapper.sh)"
-fi
-
 if [[ -d "$HOME/bin" ]]
 then
     export PATH="$PATH:$HOME/bin"
@@ -133,16 +126,6 @@ alias mv='mv -iv' # verbose + idiot proofing...
 alias rm='rm -iv' # verbose + idiot proofing...
 alias e="emacs -nw" # open emacs on the commandline
 alias ex="emacs" # open an emacs window
-alias v="workon"
-alias v.deactivate='deactivate'
-alias v.mk='mkvirtualenv --no-site-packages'
-alias v.mk_withsitepackages='mkvirtualenv'
-alias v.rm='rmvirtualenv'
-alias v.switch='workon'
-alias v.add2virtualenv='add2virtualenv'
-alias v.cdsitepackages='cdsitepackages'
-alias v.cd='cdvirtualenv'
-alias v.lssitepackages='lssitepackages'
 alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
 alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
 alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi"
@@ -154,11 +137,8 @@ alias dcp=docker-compose
 alias diga='dig +nocmd -tANY +multiline +noall +answer'
 
 # Useful functions
-function mkcd() { mkdir "$1" && cd "$1"; }
-function calc() { echo "$*" | bc; }
 function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
 function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
-function mktar() { tar czf "${1%%/}.tar.gz" "${1%%/}/"; }
 function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 
 # extract files based on file extension
