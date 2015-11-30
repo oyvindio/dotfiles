@@ -13,7 +13,8 @@ function alias_completion {
 
     # create temporary file for wrapper functions and completions
     \rm -f "/tmp/${namespace}-*.tmp" # preliminary cleanup
-    local tmp_file="$(mktemp "/tmp/${namespace}-${RANDOM}.tmp")" || return 1
+    local tmp_file
+    tmp_file="$(mktemp "/tmp/${namespace}-${RANDOM}.tmp")" || return 1
 
     # read in "<alias> '<aliased command>' '<command args>'" lines from defined aliases
     local line; while read line; do
@@ -24,15 +25,17 @@ function alias_completion {
         # (leveraging that eval errs out if $alias_args contains unquoted shell metacharacters)
         eval "local alias_arg_words=($alias_args)" 2>/dev/null || continue
 
+        echo "${completions[*]}"
         # skip alias if there is no completion function triggered by the aliased command
-        [[ " ${completions[*]} " =~ " $alias_cmd " ]] || continue
-        local new_completion="$(complete -p "$alias_cmd")"
+        [[ " ${completions[*]} " = *" $alias_cmd "* ]] || continue
+        local new_completion
+        new_completion="$(complete -p "$alias_cmd")"
 
         # create a wrapper inserting the alias arguments if any
         if [[ -n $alias_args ]]; then
             local compl_func="${new_completion/#* -F /}"; compl_func="${compl_func%% *}"
             # avoid recursive call loops by ignoring our own functions
-            if [[ "${compl_func#_$namespace::}" == $compl_func ]]; then
+            if [[ "${compl_func#_$namespace::}" == "$compl_func" ]]; then
                 local compl_wrapper="_${namespace}::${alias_name}"
                     echo "function $compl_wrapper {
                         (( COMP_CWORD += ${#alias_arg_words[@]} ))
