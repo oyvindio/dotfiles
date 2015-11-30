@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034
 _mvn() 
 {
     local cur prev opts
