@@ -1,1 +1,5 @@
-source ~/.bash_completion.d/*
+#!/usr/bin/env bash
+for file in "$HOME/.bash_completion.d"/*
+do
+    . "$file"
+done
