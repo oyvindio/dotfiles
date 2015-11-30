@@ -10,7 +10,7 @@ _mvn()
 
     common_lifecycle_phases="clean|process-resources|compile|process-test-resources|test-compile|test|package|install|deploy|site"
     common_plugins="deploy|failsafe|install|site|surefire|checkstyle|javadoc|jxr|pmd|ant|antrun|archetype|assembly|dependency|enforcer|gpg|help|release|repository|source|eclipse|idea|jetty|cargo|jboss|tomcat|tomcat6|tomcat7|exec|versions|war|ear|ejb|android|scm|nexus|repository|sonar|license|hibernate3"
-    
+
     plugin_goals_deploy="deploy:deploy-file"
     plugin_goals_failsafe="failsafe:integration-test|failsafe:verify"
     plugin_goals_install="install:install-file"
@@ -60,46 +60,46 @@ _mvn()
 
     options="-Dmaven.test.skip=true|-DskipTests|-Dmaven.surefire.debug|-DenableCiProfile|-Dpmd.skip=true|-Dcheckstyle.skip=true"
 
-    profile_settings=`[ -e ~/.m2/settings.xml ] && grep -e "<profile>" -A 1 ~/.m2/settings.xml | grep -e "<id>.*</id>" | sed 's/.*<id>/-P/' | sed 's/<\/id>//g'`
-    profile_pom=`[ -e pom.xml ] && grep -e "<profile>" -A 1 pom.xml | grep -e "<id>.*</id>" | sed 's/.*<id>/-P/' | sed 's/<\/id>//g'`
+    profile_settings=$([ -e ~/.m2/settings.xml ] && grep -e "<profile>" -A 1 ~/.m2/settings.xml | grep -e "<id>.*</id>" | sed 's/.*<id>/-P/' | sed 's/<\/id>//g')
+    profile_pom=$([ -e pom.xml ] && grep -e "<profile>" -A 1 pom.xml | grep -e "<id>.*</id>" | sed 's/.*<id>/-P/' | sed 's/<\/id>//g')
 
     local IFS=$'|\n'
 
     if [[ ${cur} == -D* ]] ; then
-      COMPREPLY=( $(compgen -S ' ' -W "${options}" -- ${cur}) )
+      COMPREPLY=( $(compgen -S ' ' -W "${options}" -- "${cur}") )
 
     elif [[ ${cur} == -P* ]] ; then
-      COMPREPLY=( $(compgen -S ' ' -W "${profile_settings}|${profile_pom}" -- ${cur}) )
+      COMPREPLY=( $(compgen -S ' ' -W "${profile_settings}|${profile_pom}" -- "${cur}") )
 
     elif [[ ${cur} == --* ]] ; then
-      COMPREPLY=( $(compgen -W "${long_opts}" -S ' ' -- ${cur}) )
+      COMPREPLY=( $(compgen -W "${long_opts}" -S ' ' -- "${cur}") )
 
     elif [[ ${cur} == -* ]] ; then
-        COMPREPLY=( $(compgen -W "${opts}" -S ' ' -- ${cur}) )
+        COMPREPLY=( $(compgen -W "${opts}" -S ' ' -- "${cur}") )
 
     elif [[ ${prev} == -pl ]] ; then
         if [[ ${cur} == *,* ]] ; then
-            COMPREPLY=( $(compgen -d -S ',' -P "${cur%,*}," -- ${cur##*,}) )
+            COMPREPLY=( $(compgen -d -S ',' -P "${cur%,*}," -- "${cur##*,}") )
         else
-            COMPREPLY=( $(compgen -d -S ',' -- ${cur}) )
+            COMPREPLY=( $(compgen -d -S ',' -- "${cur}") )
         fi
 
     elif [[ ${prev} == -rf || ${prev} == --resume-from ]] ; then
-        COMPREPLY=( $(compgen -d -S ' ' -- ${cur}) )
+        COMPREPLY=( $(compgen -d -S ' ' -- "${cur}") )
 
     elif [[ ${cur} == *:* ]] ; then
         for plugin in $common_plugins; do
           if [[ ${cur} == ${plugin}:* ]]; then
             var_name="plugin_goals_${plugin}"
-            COMPREPLY=( $(compgen -W "${!var_name}" -S ' ' -- ${cur}) )
+            COMPREPLY=( $(compgen -W "${!var_name}" -S ' ' -- "${cur}") )
           fi
         done
 
     else
         if echo "${common_lifecycle_phases}" | tr '|' '\n' | grep -q -e "^${cur}" ; then
-          COMPREPLY=( $(compgen -S ' ' -W "${common_lifecycle_phases}" -- ${cur}) )
+          COMPREPLY=( $(compgen -S ' ' -W "${common_lifecycle_phases}" -- "${cur}") )
         elif echo "${common_plugins}" | tr '|' '\n' | grep -q -e "^${cur}"; then
-          COMPREPLY=( $(compgen -S ':' -W "${common_plugins}" -- ${cur}) )
+          COMPREPLY=( $(compgen -S ':' -W "${common_plugins}" -- "${cur}") )
         fi
     fi
 }
