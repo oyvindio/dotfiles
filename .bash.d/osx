@@ -34,9 +34,25 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:or=35;7:su=31;
 # use GNU ls if it is installed
 if command_is_defined gls
 then
-   alias ls='gls --color=auto'
+    alias ls='gls --color=auto'
 else
     alias ls='ls -G' # add colors (bsd ls)
 fi
 alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ql='qlmanage -p 2> /dev/null &' # quicklook
+
+if [[ -d '/Applications/Emacs.app' ]]
+then
+    function e() {
+        local emacs_app_pid
+        emacs_app_pid=$(pgrep -f 'Emacs.app')
+        if [[ "$?" -gt 0 ]] || [[ -z "$emacs_app_pid" ]]
+        then
+            open -a '/Applications/Emacs.app' "$@"
+        else
+            emacsclient -n "$@"
+        fi
+    }
+else
+    alias e="emacs -nw"
+fi

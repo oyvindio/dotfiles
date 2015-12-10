@@ -27,5 +27,6 @@ export OOO_FORCE_DESKTOP="gnome soffice"
 # Aliases
 alias ls='ls --color=auto' # add colors (gnu ls)
 alias go='gnome-open' # try to open a file with an appropriate program
-
+alias e="emacs -nw" # open emacs on the commandline
+alias ex="emacs" # open an emacs window
 
