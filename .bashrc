@@ -51,14 +51,14 @@ function __exit_status_ps1() {
     local status="$?"
     if [[ $status -gt 0 ]]
     then
-        color='\e[0;31m'
+        color='\033[0;31m'
     else
-        color='\e[0;32m'
+        color='\033[0;32m'
     fi
-    printf "${color}%03s\e[0m" "$status"
+    printf "\\[${color}\\]%03s\\[\\033[0m\\]" "$status"
 }
 
-export PS1='$(__exit_status_ps1) \[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\] $ '
+export PS1="$(__exit_status_ps1) \[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\] $ "
 
 # Set dircolors
 if [[ -x /usr/bin/dircolors ]]
