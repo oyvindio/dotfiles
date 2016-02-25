@@ -55,10 +55,11 @@ function __exit_status_ps1() {
     else
         color='\033[0;32m'
     fi
-    printf "\\[${color}\\]%03s\\[\\033[0m\\]" "$status"
+    # printf "\\[${color}\\]%03s\\[\\033[0m\\]" "$status" #color formatting/escape condes doesn't work fsr
+    printf "%03s" "$status"
 }
 
-PS1="$(__exit_status_ps1) \[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\] $ "
+PS1='$(__exit_status_ps1) \[\033[0;34m\]\h\[\033[0;36m\] \w\[\033[0m\] $ '
 export PS1
 
 # Set dircolors
