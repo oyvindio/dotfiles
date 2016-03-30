@@ -38,6 +38,12 @@ then
 else
     alias ls='ls -G' # add colors (bsd ls)
 fi
+if command_is_defined ggrep # gnu grep > bsd grep
+then
+    alias grep='ggrep --color=auto'
+else
+    alias grep='grep --color=auto'
+fi
 alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ql='qlmanage -p 2> /dev/null &' # quicklook
 
