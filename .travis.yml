@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 before_install:
-  - "sudo echo 'deb http://archive.ubuntu.com/ubuntu/ xenial universe' >> /etc/apt/sources.list" # shellcheck is only in xenial
-  - "sudo apt-get update && apt-get install shellcheck"
+  - "echo 'deb http://archive.ubuntu.com/ubuntu/ xenial universe' | sudo tee -a /etc/apt/sources.list" # shellcheck is only in xenial
+  - "sudo apt-get update -qq && apt-get install shellcheck -y"
 script:
   - bash lint.sh
