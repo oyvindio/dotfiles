@@ -2,12 +2,6 @@ sudo: false
 addons:
   apt:
     packages:
-      - ghc
-      - cabal-install
-before_script:
-  - "([[ ! -e $HOME/.cabal/bin/shellcheck ]] && cabal update && cabal install shellcheck) || true"
-cache:
-  directories:
-    - $HOME/.cabal
+      - shellcheck
 script:
-  - PATH=${PATH}:$HOME/.cabal/bin bash lint.sh
+  - bash lint.sh
