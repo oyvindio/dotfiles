@@ -68,7 +68,7 @@ then
     eval "$(dircolors -b)"
 fi
 
-SRC_HILITE_LESSPIPE=$(which src-hilite-lesspipe.sh)
+SRC_HILITE_LESSPIPE=$(which src-hilite-lesspipe.sh 2> /dev/null)
 if [[ ! -z ${SRC_HILITE_LESSPIPE} ]]
 then
     export LESSOPEN="| ${SRC_HILITE_LESSPIPE} %s"
