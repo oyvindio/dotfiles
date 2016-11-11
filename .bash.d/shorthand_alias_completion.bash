@@ -15,8 +15,7 @@ do
 
     if [[ ${alias_value} =~ ^[^[:cntrl:][:space:]\;]+$ ]]
     then # $alias_name points to a single command $alias_value with no args
-        alias_value_complete=$(complete -p "$alias_value" 2> /dev/null)
-        if [[ $? == 0 ]]
+        if alias_value_complete=$(complete -p "$alias_value" 2> /dev/null)
         then
             complete_command=${alias_value_complete% +([^[:cntrl:]])}
             # echo "eval \"$complete_command $alias_name\""
