@@ -3,7 +3,7 @@
 [ -z "$PS1" ] && return
 
 if [ -t 1 ]; then
-    stty -ixon -ixoff # disable tty flow control (^s and ^q) 
+    stty -ixon -ixoff # disable tty flow control (^s and ^q)
     stty werase undef # disable the ttys ^w which overrides readlines backward-kill-word
 fi
 
@@ -49,12 +49,12 @@ esac
 
 function __exit_status_ps1() {
     local status="$?"
-    if [[ $status -gt 0 ]]
-    then
-        color='\033[0;31m'
-    else
-        color='\033[0;32m'
-    fi
+    # if [[ $status -gt 0 ]]
+    # then
+    #     color='\033[0;31m'
+    # else
+    #     color='\033[0;32m'
+    # fi
     # printf "\\[${color}\\]%03s\\[\\033[0m\\]" "$status" #color formatting/escape condes doesn't work fsr
     printf "%03s" "$status"
 }
