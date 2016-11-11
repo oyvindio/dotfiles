@@ -11,6 +11,12 @@ function enable_bash_completion() {
         then
             eval "$(brew command-not-found-init)";
         fi
+        if command_is_defined kubectl
+        then
+            eval "$(kubectl completion bash)"
+        fi
+        source_if_exists '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+        source_if_exists '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
     fi
 }
 

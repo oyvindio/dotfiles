@@ -3,6 +3,10 @@
 # bash completion
 function enable_bash_completion() {
     source_if_exists /etc/bash_completion
+    if command_is_defined kubectl
+    then
+        eval "$(kubectl completion bash)"
+    fi
 }
 
 # Exports
