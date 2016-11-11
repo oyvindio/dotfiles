@@ -50,9 +50,7 @@ alias ql='qlmanage -p 2> /dev/null &' # quicklook
 if [[ -d '/Applications/Emacs.app' ]]
 then
     function e() {
-        local emacs_app_pid
-        emacs_app_pid=$(pgrep -f 'Emacs.app')
-        if [[ "$?" -gt 0 ]] || [[ -z "$emacs_app_pid" ]]
+        if pgrep -qf 'Emacs.app'
         then
             open -a '/Applications/Emacs.app' "$@"
         else
