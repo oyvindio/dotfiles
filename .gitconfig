@@ -25,6 +25,7 @@
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(committerdate:iso8601) %(color:magenta)%(refname:short)%(color:reset)'
         staged = diff --cached
         ignore = !bash -c '([ ! -e .gitignore ] && touch .gitignore) || grep -qo \"$1\" .gitignore || echo \"$1\" >> .gitignore' -
+        privateprofile = ! git config user.name 'Øyvind Ingebrigtsen Øvergaard' && git config user.email 'oyvind.overgaard@gmail.com' && echo "user.name=$(git config user.name)" && echo "user.email=$(git config user.email)"
 [pack]
 	threads = 0
 [core]
