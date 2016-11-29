@@ -58,6 +58,11 @@ then
     function e() {
         if pgrep -qf 'Emacs.app'
         then
+            for f in "${@}"; do
+                if ! [[ -f "$f" ]]; then
+                    touch "$f"
+                fi
+            done
             open -a '/Applications/Emacs.app' "$@"
         else
             emacsclient -n "$@"
