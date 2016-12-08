@@ -208,6 +208,23 @@ function __upto() {
 }
 complete -o default -F __upto upto
 
+function _cd_subdir() {
+    local name="$1"
+    local subdirectory="$2"
+# intentionally don't expand $1; quiet shellcheck
+# shellcheck disable=SC2016
+echo 'function '"$name"'() {
+    cd '"${subdirectory}"'/$1 || return 1
+}
+function __'"$name"'() {
+    local subdirectory=$1
+    local cur
+    _get_comp_words_by_ref cur
+    COMPREPLY=( $(cd '"$subdirectory"' && compgen -d -- "$cur") )
+}
+complete -o nospace -S / -o dirnames -F __'"$name $name"
+}
+
 source_if_exists ~/.bashrc_local
 
 enable_bash_completion
