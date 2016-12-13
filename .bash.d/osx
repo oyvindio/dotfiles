@@ -56,7 +56,7 @@ alias ql='qlmanage -p 2> /dev/null &' # quicklook
 if [[ -d '/Applications/Emacs.app' ]]
 then
     function e() {
-        if pgrep -qf 'Emacs.app'
+        if ! pgrep -qf 'Emacs.app'
         then
             for f in "${@}"; do
                 if ! [[ -f "$f" ]]; then
