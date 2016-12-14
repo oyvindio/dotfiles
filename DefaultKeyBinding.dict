@@ -14,6 +14,7 @@
  "~^h" ="deleteWordBackward:";
  "^w" ="deleteWordBackward:";
  "~\010" ="deleteWordBackward:"; /* Alt-backspace */
- "~\177" ="deleteWordBackward:"; /* Alt-delete */ 
+ "~\177" ="deleteWordBackward:"; /* Alt-delete */
  "~/" ="complete:";
+ "^u" = "deleteToBeginningOfLine:";
 }
