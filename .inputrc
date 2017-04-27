@@ -32,7 +32,9 @@ set page-completions off
 set match-hidden-files off
 
 # Use color from LS_COLORS when completing files/dirs
+$if bash
 set colored-stats on
+$endif
 
 # set-mark,  kill-region, kill-ring-save/copy-region-as-kill like emacs
 "\C-SPACE": set-mark
