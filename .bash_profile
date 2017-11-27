@@ -10,5 +10,3 @@ fi
 
 # shellcheck source=.bashrc
 . ~/.bashrc
-
-if hash rbenv > /dev/null; then eval "$(rbenv init -)"; fi
