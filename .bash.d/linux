@@ -5,7 +5,7 @@ function enable_bash_completion() {
     source_if_exists /etc/bash_completion
     if command_is_defined kubectl
     then
-        eval "$(kubectl completion bash)"
+        __eval_output_cached kubectl completion bash
     fi
 }
 
@@ -33,4 +33,3 @@ alias ls='ls --color=auto' # add colors (gnu ls)
 alias go='gnome-open' # try to open a file with an appropriate program
 alias e="emacs -nw" # open emacs on the commandline
 alias ex="emacs" # open an emacs window
-

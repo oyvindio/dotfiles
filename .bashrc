@@ -36,6 +36,21 @@ function command_is_defined() {
     type -t "$1" &> /dev/null
 }
 
+function __eval_output_cached() {
+    local base_dir="$TMPDIR/${FUNCNAME[0]}"
+    mkdir -p "$base_dir"
+
+    local cmdline=("$@")
+    local cmdline_string="${cmdline[*]}"
+    local cached_output_filepath="$base_dir/${cmdline_string//[^A-Za-z0-9._-]/_}"
+    if [[ -f "$cached_output_filepath" ]]; then
+        . "$cached_output_filepath"
+    else
+        "${cmdline[@]}" > "$cached_output_filepath"
+        "${FUNCNAME[0]}" "${cmdline[@]}"
+    fi
+}
+
 case $(uname -s) in
     Linux)
         # shellcheck source=.bash.d/linux
@@ -65,7 +80,7 @@ export PS1
 # Set dircolors
 if [[ -x /usr/bin/dircolors ]]
 then
-    eval "$(dircolors -b)"
+    __eval_output_cached dircolors -b
 fi
 
 SRC_HILITE_LESSPIPE=$(which src-hilite-lesspipe.sh 2> /dev/null)
@@ -79,7 +94,7 @@ export LESS=' -R '
 # enable completion for pip
 if command_is_defined pip
 then
-    eval "$(pip completion --bash 2>/dev/null)"
+    __eval_output_cached pip completion --bash 2>/dev/null
 fi
 
 # Change the window title of X terminals
