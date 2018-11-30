@@ -44,6 +44,7 @@ function __eval_output_cached() {
     local cmdline_string="${cmdline[*]}"
     local cached_output_filepath="$base_dir/${cmdline_string//[^A-Za-z0-9._-]/_}"
     if [[ -f "$cached_output_filepath" ]]; then
+        # shellcheck disable=SC1090
         . "$cached_output_filepath"
     else
         "${cmdline[@]}" > "$cached_output_filepath"
@@ -83,8 +84,7 @@ then
     __eval_output_cached dircolors -b
 fi
 
-SRC_HILITE_LESSPIPE=$(which src-hilite-lesspipe.sh 2> /dev/null)
-if [[ ! -z ${SRC_HILITE_LESSPIPE} ]]
+if command_is_defined src-hilite-lesspipe.sh
 then
     export LESSOPEN="| ${SRC_HILITE_LESSPIPE} %s"
 fi
@@ -118,7 +118,7 @@ export MANPAGER=less
 export EDITOR="emacs -nw"
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR="" # this makes emacsclient start the emacs daemon
-if ([[ ${BASH_VERSINFO[0]} -eq 4 ]] && [[ ${BASH_VERSINFO[1]} -ge 3 ]]) || [[ ${BASH_VERSINFO[0]} -gt 4 ]]; then
+if { [[ ${BASH_VERSINFO[0]} -eq 4 ]] && [[ ${BASH_VERSINFO[1]} -ge 3 ]]; } || [[ ${BASH_VERSINFO[0]} -gt 4 ]]; then
     export HISTSIZE=-1
     export HISTFILESIZE=-1
 else
@@ -219,7 +219,7 @@ function upto() {
 function __upto() {
     local cur
     _get_comp_words_by_ref cur
-    COMPREPLY=( $( compgen -W "${PWD//\// }" -- "$cur" ) )
+    mapfile -t COMPREPLY < <(compgen -W "${PWD//\// }" -- "$cur")
 }
 complete -o default -F __upto upto
 

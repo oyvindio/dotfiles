@@ -84,7 +84,7 @@ then
         i_color="I$color"
         bi_color="BI_$color"
         on_icolor="On_i$color"
-        OUTPUT="$OUTPUT\n\
+        OUTPUT="$OUTPUT\\n\
 ${!color}$color$Color_Off \
 ${!b_color}$b_color$Color_Off \
 ${!u_color}$u_color$Color_Off \

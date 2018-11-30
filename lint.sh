@@ -5,5 +5,5 @@ if [[ "$TRAVIS" == "true" ]]; then
 else
     SHELLCHECK='shellcheck'
 fi
-FILES=($(find .bash.d .bash_completion.d .bashrc .bash_profile .bash_completion lint.sh setup-osx.sh -type f))
+mapfile -t FILES < <(find .bash.d .bash_completion.d .bashrc .bash_profile .bash_completion lint.sh setup-osx.sh -type f)
 $SHELLCHECK --shell=bash --format=gcc "${FILES[@]}"
