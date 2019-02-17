@@ -1,6 +1,7 @@
 [user]
 	name = Øyvind Ingebrigtsen Øvergaard
 	email = oyvind.overgaard@gmail.com
+        signingkey = 21EDA6C5BB797C932F4355B19C63541C5BBEE7FA
 [color]
 	diff = auto
 	status = auto
@@ -39,3 +40,5 @@
         autostash = true
 [diff]
 	compactionHeuristic = true
+[commit]
+	gpgsign = true
