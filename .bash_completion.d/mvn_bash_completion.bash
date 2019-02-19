@@ -1,5 +1,5 @@
 # shellcheck disable=SC2034
-_mvn() 
+_mvn()
 {
     local cur prev opts
     COMPREPLY=()
@@ -17,7 +17,7 @@ _mvn()
     plugin_goals_install="install:install-file"
     plugin_goals_site="site:site|site:deploy|site:run|site:stage|site:stage-deploy"
     plugin_goals_surefire="surefire:test"
-    
+
     plugin_goals_checkstyle="checkstyle:checkstyle|checkstyle:check"
     plugin_goals_javadoc="javadoc:javadoc|javadoc:jar|javadoc:aggregate"
     plugin_goals_jxr="jxr:jxr"
@@ -34,10 +34,10 @@ _mvn()
     plugin_goals_release="release:clean|release:prepare|release:rollback|release:perform|release:stage|release:branch|release:update-versions"
     plugin_goals_repository="repository:bundle-create|repository:bundle-pack"
     plugin_goals_source="source:aggregate|source:jar|source:jar-no-fork"
-    
+
     plugin_goals_eclipse="eclipse:clean|eclipse:eclipse"
     plugin_goals_idea="idea:clean|idea:idea"
-    
+
     plugin_goals_jetty="jetty:run|jetty:run-exploded"
     plugin_goals_cargo="cargo:start|cargo:run|cargo:stop|cargo:deploy|cargo:undeploy|cargo:help"
     plugin_goals_jboss="jboss:start|jboss:stop|jboss:deploy|jboss:undeploy|jboss:redeploy"
@@ -67,40 +67,40 @@ _mvn()
     local IFS=$'|\n'
 
     if [[ ${cur} == -D* ]] ; then
-      COMPREPLY=( $(compgen -S ' ' -W "${options}" -- "${cur}") )
+      mapfile -t COMPREPLY < <(compgen -S ' ' -W "${options}" -- "${cur}")
 
     elif [[ ${cur} == -P* ]] ; then
-      COMPREPLY=( $(compgen -S ' ' -W "${profile_settings}|${profile_pom}" -- "${cur}") )
+      mapfile -t COMPREPLY < <(compgen -S ' ' -W "${profile_settings}|${profile_pom}" -- "${cur}")
 
     elif [[ ${cur} == --* ]] ; then
-      COMPREPLY=( $(compgen -W "${long_opts}" -S ' ' -- "${cur}") )
+      mapfile -t COMPREPLY < <(compgen -W "${long_opts}" -S ' ' -- "${cur}")
 
     elif [[ ${cur} == -* ]] ; then
-        COMPREPLY=( $(compgen -W "${opts}" -S ' ' -- "${cur}") )
+        mapfile -t COMPREPLY < <(compgen -W "${opts}" -S ' ' -- "${cur}")
 
     elif [[ ${prev} == -pl ]] ; then
         if [[ ${cur} == *,* ]] ; then
-            COMPREPLY=( $(compgen -d -S ',' -P "${cur%,*}," -- "${cur##*,}") )
+            mapfile -t COMPREPLY < <(compgen -d -S ',' -P "${cur%,*}," -- "${cur##*,}")
         else
-            COMPREPLY=( $(compgen -d -S ',' -- "${cur}") )
+            mapfile -t COMPREPLY < <(compgen -d -S ',' -- "${cur}")
         fi
 
     elif [[ ${prev} == -rf || ${prev} == --resume-from ]] ; then
-        COMPREPLY=( $(compgen -d -S ' ' -- "${cur}") )
+        mapfile -t COMPREPLY < <(compgen -d -S ' ' -- "${cur}")
 
     elif [[ ${cur} == *:* ]] ; then
         for plugin in $common_plugins; do
           if [[ ${cur} == ${plugin}:* ]]; then
             var_name="plugin_goals_${plugin}"
-            COMPREPLY=( $(compgen -W "${!var_name}" -S ' ' -- "${cur}") )
+            mapfile -t COMPREPLY < <(compgen -W "${!var_name}" -S ' ' -- "${cur}")
           fi
         done
 
     else
         if echo "${common_lifecycle_phases}" | tr '|' '\n' | grep -q -e "^${cur}" ; then
-          COMPREPLY=( $(compgen -S ' ' -W "${common_lifecycle_phases}" -- "${cur}") )
+          mapfile -t COMPREPLY < <(compgen -S ' ' -W "${common_lifecycle_phases}" -- "${cur}")
         elif echo "${common_plugins}" | tr '|' '\n' | grep -q -e "^${cur}"; then
-          COMPREPLY=( $(compgen -S ':' -W "${common_plugins}" -- "${cur}") )
+          mapfile -t COMPREPLY < <(compgen -S ':' -W "${common_plugins}" -- "${cur}")
         fi
     fi
 }
