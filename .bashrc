@@ -204,7 +204,7 @@ function x() {
 # cd up to a named dir in the current working directory
 function upto() {
     local p="$PWD";
-    while [[ $p ]];
+    while [[ -n $p ]];
     do
         if [[ ${p##*/} = "$1" ]];
         then
