@@ -16,7 +16,7 @@
 	dc = diff --cached
         dfw = diff --color-words
         dcw = diff --cached --color-words
-	lg = log --pretty=format:'%C(blue)%h%C(reset) -%C(magenta)%d%C(reset) %s %C(cyan)(%cr)%C(reset)' --abbrev-commit --date=relative
+	lg = log --pretty=format:'%C(blue)%h%C(reset) %C(yellow)%G?%C(reset) -%C(magenta)%d%C(reset) %s %C(cyan)(%cr)%C(reset)' --abbrev-commit --date=relative
 	who = shortlog -s --
 	unstage = reset HEAD
 	ap = add --patch
