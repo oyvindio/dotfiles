@@ -166,8 +166,12 @@ alias digx='dig +nocmd -tANY +multiline +noall +answer -x'
 alias dockerlint='docker run --rm -i lukasmartinelli/hadolint < '
 
 # Useful functions
-function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
-function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
+function hex2dec {
+    printf "%d\n" "$1"
+}
+function dec2hex {
+    printf "0x%x\n" "$1"
+}
 function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 
 # extract files based on file extension
