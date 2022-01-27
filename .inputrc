@@ -41,6 +41,8 @@ $endif
 "\C-x\C-k": kill-region
 "\e-w": copy-region-as-kill
 
-
 # bind backward-kill-word like emacs, tty C-w sucks.
 "\C-w": backward-kill-word
+
+# emacs "find-file" fuzzy match
+"\C-x\C-f": 'emacsclient --no-wait $(fzf)\C-m'
