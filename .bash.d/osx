@@ -10,7 +10,9 @@ for prefix in '/opt/homebrew' '/usr/local'; do
 done
 
 function enable_bash_completion() {
-    if command_is_defined brew
+    if [[ -n "${BREW_PREFIX:-}" ]]; then
+        source_if_exists "${BREW_PREFIX}/etc/bash_completion"
+    elif command_is_defined brew
     then
         source_if_exists "$(brew --prefix)/etc/bash_completion"
     fi
