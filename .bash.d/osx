@@ -52,6 +52,7 @@ else
 fi
 alias emacs='emacs -nw' # don't start cocoa emacs by accident
 alias ql='qlmanage -p 2> /dev/null &' # quicklook
+alias dnslookup='dscacheutil -q host -a name'
 
 if [[ -d '/Applications/Emacs.app' ]]
 then
