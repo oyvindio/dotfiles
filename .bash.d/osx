@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# find homebrew cli to set up PATH etc
+for prefix in '/opt/homebrew' '/usr/local'; do
+    brew_cli="$prefix/bin/brew"
+    if [[ -x "$brew_cli" ]]; then
+        __eval_output_cached "$brew_cli" shellenv
+        break
+    fi
+done
+
 function enable_bash_completion() {
     if command_is_defined brew
     then
