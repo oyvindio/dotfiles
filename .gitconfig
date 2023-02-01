@@ -34,6 +34,7 @@
 	excludesfile = ~/.gitignore_global
 [push]
 	default = upstream
+        autoSetupRemote = true
 [url "https://github.com/"]
      insteadOf = "gh:"
 [rebase]
