@@ -134,7 +134,6 @@ export LESS_TERMCAP_so=$'\E[01;40;33m' # begin standout mode
 export LESS_TERMCAP_se=$'\E[0m' # end standout mode
 export LESS_TERMCAP_us=$'\E[0;36m' #begin underline
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
-export LESS=' -R '
 
 # Useful aliases
 alias ..="cd .." # lazy
