@@ -44,5 +44,12 @@ $endif
 # bind backward-kill-word like emacs, tty C-w sucks.
 "\C-w": backward-kill-word
 
+# These only make sense in a shell
+$ if Bash
 # find file in project via emacs
 "\C-x\C-f": 'emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" "(counsel-projectile-find-file)"\C-m'
+
+# open magit for current directory
+# note: overwrites default binding of "\C-xg": glob-list-expansions
+"\C-xg": 'emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" "(magit-status)"\C-m'
+$endif
