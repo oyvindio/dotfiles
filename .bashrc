@@ -84,13 +84,6 @@ then
     __eval_output_cached dircolors -b
 fi
 
-if command_is_defined src-hilite-lesspipe.sh
-then
-    export LESSOPEN="| ${SRC_HILITE_LESSPIPE} %s"
-fi
-unset SRC_HILITE_LESSPIPE
-export LESS=' -R '
-
 # enable completion for pip
 if command_is_defined pip
 then
@@ -98,7 +91,7 @@ then
 fi
 
 # Change the window title of X terminals
-case $TERM in
+case "$TERM" in
     aterm|eterm|*xterm*|konsole|kterm|rxvt*|wterm)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/$HOME/~}\007"'
         ;;
@@ -140,6 +133,7 @@ export LESS_TERMCAP_so=$'\E[01;40;33m' # begin standout mode
 export LESS_TERMCAP_se=$'\E[0m' # end standout mode
 export LESS_TERMCAP_us=$'\E[0;36m' #begin underline
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
+export LESS=' -R '
 
 # Python rc file
 export PYTHONSTARTUP="$HOME/.pythonrc"
@@ -149,21 +143,10 @@ alias ..="cd .." # lazy
 alias ll='ls -lh' # long listing
 alias l=ll
 alias la='ls -lah' # include hidden files
-alias lr='ls -lRh' # recursive ls
 alias cp='cp -iv' # verbose + idiot proofing...
 alias mv='mv -iv' # verbose + idiot proofing...
 alias rm='rm -iv' # verbose + idiot proofing...
-alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
-alias py-watchdog="watchmedo shell-command --patterns='*.py' --recursive --command='py.test -v'"
-alias docker-rmi-untagged="docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi"
-alias docker-rmi-dangling='docker images --filter dangling=true --quiet | xargs docker rmi'
-alias docker-rm-stopped='docker ps -f status=exited -q | xargs docker rm'
 alias g=git
-alias dm=docker-machine
-alias dcp=docker-compose
-alias diga='dig +nocmd -tANY +multiline +noall +answer'
-alias digx='dig +nocmd -tANY +multiline +noall +answer -x'
-alias dockerlint='docker run --rm -i lukasmartinelli/hadolint < '
 
 # Useful functions
 function hex2dec {
@@ -172,7 +155,6 @@ function hex2dec {
 function dec2hex {
     printf "0x%x\n" "$1"
 }
-function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
 
 # extract files based on file extension
 function x() {
