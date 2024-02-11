@@ -8,18 +8,19 @@ if [ -t 1 ]; then
 fi
 
 # Useful bash options
-shopt -s cdable_vars # if cd arg is not valid, assumes its a var defining a dir
-shopt -s cdspell # autocorrects cd misspellings
-shopt -s checkwinsize # update the value of LINES and COLUMNS after each command if altered
-shopt -s cmdhist # save multi-line commands in history as single line
-shopt -s dotglob # include dotfiles in pathname expansion
-shopt -s expand_aliases # expand aliases
-shopt -s extglob # enable extended pattern-matching features
-shopt -s histappend # append to (not overwrite) the history file
-shopt -s histverify # readline goodness for history substitutions
-shopt -s histreedit # allow re-editing failed history substitutions
-shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
-shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
+# shopt -s cdable_vars # if cd arg is not valid, assumes its a var defining a dir
+# shopt -s cdspell # autocorrects cd misspellings
+# shopt -s checkwinsize # update the value of LINES and COLUMNS after each command if altered
+# shopt -s cmdhist # save multi-line commands in history as single line
+# shopt -s dotglob # include dotfiles in pathname expansion
+# shopt -s expand_aliases # expand aliases
+# shopt -s extglob # enable extended pattern-matching features
+# shopt -s histappend # append to (not overwrite) the history file
+# shopt -s histverify # readline goodness for history substitutions
+# shopt -s histreedit # allow re-editing failed history substitutions
+# shopt -s hostcomplete # attempt hostname expansion when @ is at the beginning of a word
+# shopt -s nocaseglob # pathname expansion will be treated as case-insensitive
+shopt -s cdable_vars cdspell checkwinsize cmdhist dotglob expand_aliases extglob histappend histverify histreedit hostcomplete nocaseglob
 [[ ${BASH_VERSINFO[0]} -ge 4 ]] && shopt -s globstar # allow recursive globbing with ** (bash 4.0 and later only)
 
 function source_if_exists() {
