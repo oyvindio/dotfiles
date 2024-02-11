@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ "$(uname)" =~ Darwin ]]
+if [[ "$OSTYPE" =~ darwin* ]]
 then
     # os x sets locale vars to non-standard values. this sometimes causes
     # encoding issues on remote machines

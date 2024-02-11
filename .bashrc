@@ -52,12 +52,12 @@ function __eval_output_cached() {
     fi
 }
 
-case $(uname -s) in
-    Linux)
+case "$OSTYPE" in
+    linux*)
         # shellcheck source=.bash.d/linux
         . ~/.bash.d/linux
         ;;
-    Darwin)
+    darwin*)
         # shellcheck source=.bash.d/osx
         . ~/.bash.d/osx
         ;;
