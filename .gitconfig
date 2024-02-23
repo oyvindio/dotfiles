@@ -26,7 +26,6 @@
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(committerdate:iso8601) %(color:magenta)%(refname:short)%(color:reset)'
         staged = diff --cached
         ignore = !bash -c '([ ! -e .gitignore ] && touch .gitignore) || grep -qo \"$1\" .gitignore || echo \"$1\" >> .gitignore' -
-        promote = ! git push -u origin "$(git rev-parse --abbrev-ref HEAD)"
 [pack]
 	threads = 0
 [core]
