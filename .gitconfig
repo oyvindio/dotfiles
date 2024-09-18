@@ -9,22 +9,16 @@
 [alias]
 	ci = commit
 	st = status -sb
-	br = branch -vv
 	co = checkout
 	df = diff
 	dc = diff --cached
-        dfw = diff --color-words
-        dcw = diff --cached --color-words
 	lg = log --pretty=format:'%C(blue)%h%C(reset) %C(yellow)%G?%C(reset) -%C(magenta)%d%C(reset) %s %C(cyan)(%cr)%C(reset)' --abbrev-commit --date=relative --topo-order
 	who = shortlog -s --
 	unstage = reset HEAD
-	ap = add --patch
-	dfst = !git --no-pager diff --stat -r
 	pr = pull --rebase
         conflicted = diff --name-only --diff-filter=U
         recent-branches = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(committerdate:iso8601) %(color:magenta)%(refname:short)%(color:reset)'
         staged = diff --cached
-        ignore = !bash -c '([ ! -e .gitignore ] && touch .gitignore) || grep -qo \"$1\" .gitignore || echo \"$1\" >> .gitignore' -
 [pack]
 	threads = 0
 [core]
@@ -33,8 +27,6 @@
 [push]
 	default = upstream
         autoSetupRemote = true
-[url "https://github.com/"]
-     insteadOf = "gh:"
 [rebase]
         autostash = true
 [diff]
