@@ -42,3 +42,6 @@
 	compactionHeuristic = true
 [commit]
 	gpgsign = true
+[bash]
+	showInformativeStatus = true
+	showDirtyState = true

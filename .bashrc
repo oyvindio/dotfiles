@@ -233,6 +233,5 @@ unset enable_bash_completion
 # Add git status to prompt if __git_ps1 is available
 if command_is_defined __git_ps1
 then
-    export GIT_PS1_SHOWDIRTYSTATE=1
     export PS1="${PS1% $ }"'\[\033[1;35m\]$(__git_ps1 " (%s)")\[\033[0m\] $ '
 fi
