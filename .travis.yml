@@ -1,4 +1,0 @@
-sudo: required
-services:
-  - docker
-script: bash lint.sh
