@@ -1,7 +1,10 @@
-set ___grep grep
-if command -sq ggrep
-    set ___grep ggrep
+function grep --wraps grep
+    command grep --color=auto $argv
 end
-function grep --wraps $___grep --inherit-variable ___grep
-    $___grep --color=auto $argv
+
+# use gnu grep if g-prefixed binary available (macOS)
+if command -sq ggrep
+    function grep --wraps ggrep
+        ggrep --color=auto $argv
+    end
 end

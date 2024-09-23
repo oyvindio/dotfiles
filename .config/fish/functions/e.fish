@@ -1,7 +1,7 @@
-if test -d '/Applications/Emacs.app'
-    function e --wraps emacsclient
+function e --wraps emacs
+    if test -d /Applications/Emacs.app
         if ! pgrep -qf 'Emacs.app'
-            for f in $argv; do
+            for f in $argv
                 if ! test -f $f
                     touch $f
                 end
@@ -10,9 +10,7 @@ if test -d '/Applications/Emacs.app'
         else
             emacsclient -n $argv
         end
-    end
-else
-    function e --wraps emacs
-        emacs -nw $argv
+    else
+        emacs -nw $args
     end
 end
