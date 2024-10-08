@@ -35,6 +35,7 @@ bind \cx\cf 'emacsclient --no-wait --eval "(select-frame-set-input-focus (select
 bind \cxg 'emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" "(magit-status)"; commandline -f repaint'
 
 fish_add_path ~/bin
+fish_add_path ~/.local/bin
 
 if test -f ~/.local.fish
     source ~/.local.fish
