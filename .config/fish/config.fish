@@ -3,7 +3,8 @@ if ! status is-interactive
 end
 
 set fish_greeting
-fish_config theme choose Solarized\ Light
+# fish_config theme choose Solarized\ Light
+fish_config theme choose 'Tomorrow Night Bright'
 set fish_color_host blue
 set  __fish_git_prompt_showcolorhints 1
 
