@@ -10,8 +10,4 @@ function update_vendor_configurations
     if command -sq pyenv
         pyenv init - fish | tee ~/.config/fish/conf.d/pyenv.generated.fish | source
     end
-    
-    if command -sq kubectl
-        kubectl completion fish | tee ~/.config/fish/completions/kubectl.generated.fish | source
-    end
 end
