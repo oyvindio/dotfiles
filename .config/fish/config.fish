@@ -9,7 +9,7 @@ set fish_color_host blue
 set  __fish_git_prompt_showcolorhints 1
 
 abbr -a cp cp -iv
-abbr -a rm rm -iv
+abbr -a rm rm -Iv
 abbr -a mv mv -iv
 abbr dnslookup dscacheutil -q host -a name
 
