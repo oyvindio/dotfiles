@@ -27,13 +27,7 @@ set -gx LESS_TERMCAP_se \e'[0m' # end standout mode
 set -gx LESS_TERMCAP_us \e'[0;36m' #begin underline
 set -gx LESS_TERMCAP_ue \e'[0m' # end underline
 
-# ignore one EOF/C-d, similar to IGNOREEOF=1 in bash
-bind \cd delete-char
-bind \cd\cd delete-or-exit
 
-# fun emacs bindings
-bind \cx\cf 'emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" "(counsel-projectile-find-file)"; commandline -f repaint'
-bind \cxg 'emacsclient --no-wait --eval "(select-frame-set-input-focus (selected-frame))" "(magit-status)"; commandline -f repaint'
 
 fish_add_path ~/bin
 fish_add_path ~/.local/bin
