@@ -18,17 +18,6 @@ set -gx EDITOR 'emacsclient'
 set -gx VISUAL $EDITOR
 set -gx ALTERNATE_EDITOR '' # this makes emacsclient start the emacs daemon
 
-# colorize man pages in less
-set -gx LESS_TERMCAP_mb \e'[01;31m' # begin blinking
-set -gx LESS_TERMCAP_md \e'[0;34m' # begin bold
-set -gx LESS_TERMCAP_me \e'[0m' # end bold
-set -gx LESS_TERMCAP_so \e'[01;40;33m' # begin standout mode
-set -gx LESS_TERMCAP_se \e'[0m' # end standout mode
-set -gx LESS_TERMCAP_us \e'[0;36m' #begin underline
-set -gx LESS_TERMCAP_ue \e'[0m' # end underline
-
-
-
 fish_add_path ~/bin
 fish_add_path ~/.local/bin
 
