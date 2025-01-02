@@ -1,4 +1,5 @@
 font-family = "Source Code Pro"
 font-size = 17
+font-thicken = true
 theme = "Github Dark"
 macos-option-as-alt = "right"
